@@ -1,0 +1,15 @@
+/target
+/lib
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+/.idea
+/*-init.clj
+*.iml
+.hgignore
+.hg/
