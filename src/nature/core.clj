@@ -1,11 +1,14 @@
 (ns nature.core
-  (:require [clojure.spec.alpha :as s]
-            [clj-uuid :as uuid])
+  (:require [clojure.spec.alpha :as s])
   (:gen-class))
+
+(defn uuid
+  []
+  (str (java.util.UUID/randomUUID)))
 
 (def data-model
   {:genetic-sequence [0 1 0 1 1 1]
-   :guid "12345"
+   :guid (uuid)
    :age 1
    :fitness-score 0.1M})
 
