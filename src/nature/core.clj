@@ -1,5 +1,5 @@
 (ns nature.core
-  (:require [clojure.spec.alpha :as s])
+  (:require [nature.spec :as s])
   (:gen-class))
 
 (defn uuid
@@ -7,30 +7,16 @@
   (str (java.util.UUID/randomUUID)))
 
 (defn build-individual
-  "Create a hard-coded individual"
-  []
-  (assoc {} :genetic-sequence [0 1 0 1 1 1]
-         :guid (uuid)
-         :age 1
-         :fitness-score 0.1M))
-
-(s/def ::genetic-sequence
-  (s/and vector?
-         #(not (empty? %))))
-
-(s/def ::guid string?)
-
-(s/def ::age integer?)
-
-(s/def ::fitness-score decimal?)
-
-(s/def ::individual
-  (s/keys :req-un [::genetic-sequence
-                   ::guid
-                   ::age
-                   ::fitness-score]))
+  "Create a generated individual"
+  [allele-set sequence-length fitness-function]
+  (let [genes (repeatedly sequence-length #(rand-nth allele-set))]
+    (assoc {} :genetic-sequence genes
+              :guid (uuid)
+              :parents ["Initializer"]
+              :age 0
+              :fitness-score (fitness-function genes))))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (println (s/valid? ::individual (build-individual))))
+  (println (build-individual [1 0] 5 (partial apply +))))
