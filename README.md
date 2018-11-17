@@ -1,36 +1,17 @@
 # nature
 
-FIXME: description
+A simple genetic algorithms library for Clojure.
 
-## Installation
+## API
 
-Download from http://example.com/FIXME.
+View Codox Documentation here: https://nnichols.github.io/nature/api/index.html
 
-## Usage
+## Code Health
 
-FIXME: explanation
-
-    $ java -jar nature-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+View Cloverage Reports here: https://nnichols.github.io/nature/coverage/index.html
 
 ## License
 
-Copyright © 2018 FIXME
+Copyright © 2018 Nick Nichols
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
