@@ -11,10 +11,10 @@
   [allele-set sequence-length fitness-function]
   (let [genes (repeatedly sequence-length #(rand-nth allele-set))]
     (assoc {} :genetic-sequence genes
-              :guid (uuid)
-              :parents ["Initializer"]
-              :age 0
-              :fitness-score (fitness-function genes))))
+           :guid (uuid)
+           :parents ["Initializer"]
+           :age 0
+           :fitness-score (fitness-function genes))))
 
 (defn -main
   "I don't do a whole lot ... yet."
