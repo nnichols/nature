@@ -13,3 +13,5 @@ pom.xml.asc
 *.iml
 .hgignore
 .hg/
+
+/.commit-style.txt
