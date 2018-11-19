@@ -8,8 +8,7 @@
 (s/def ::guid string?)
 
 (s/def ::parents
-  (s/and coll?
-         not-empty))
+  (s/coll-of string?))
 
 (s/def ::age integer?)
 
@@ -21,3 +20,6 @@
                    ::parents
                    ::age
                    ::fitness-score]))
+
+(s/def ::population
+  (s/coll-of #(s/valid? ::individual %)))

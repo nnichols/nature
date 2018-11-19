@@ -1,5 +1,6 @@
 (ns nature.core
-  (:require [nature.spec :as s])
+  (:require [nature.spec :as s]
+            [bigml.sampling.simple :as bss])
   (:gen-class))
 
 (defn uuid
@@ -14,7 +15,8 @@
   "Create a generated individual"
   [allele-set sequence-length fitness-function]
   (let [genes (generate-sequence allele-set sequence-length)]
-    (assoc {} :genetic-sequence genes
+    (assoc {}
+           :genetic-sequence genes
            :guid (uuid)
            :parents ["Initializer"]
            :age 0
@@ -22,9 +24,20 @@
 
 (defn build-population
   [population-size allele-set sequence-length fitness-function]
-  (repeatedly population-size #(build-individual allele-set sequence-length fitness-function)))
+  (repeatedly population-size
+              #(build-individual allele-set sequence-length fitness-function)))
+
+(defn weighted-selection-of-population
+  [population total-retrieved & [replace?]]
+  (take total-retrieved (bss/sample population
+                                    :weigh #(:fitness-score %)
+                                    :replace replace?)))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (println (build-population 5 [1 0] 5 (partial apply +))))
+  (run! println
+        (weighted-selection-of-population
+         (build-population 50 [1 0] 50 (partial apply +))
+         10
+         true)))
