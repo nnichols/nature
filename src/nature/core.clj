@@ -8,13 +8,13 @@
   (str (java.util.UUID/randomUUID)))
 
 (defn generate-sequence
-  [allele-set sequence-length]
-  (repeatedly sequence-length #(rand-nth allele-set)))
+  [alleles sequence-length]
+  (repeatedly sequence-length #(rand-nth alleles)))
 
 (defn build-individual
   "Create a generated individual"
-  [allele-set sequence-length fitness-function]
-  (let [genes (generate-sequence allele-set sequence-length)]
+  [alleles sequence-length fitness-function]
+  (let [genes (generate-sequence alleles sequence-length)]
     (assoc {}
            :genetic-sequence genes
            :guid (uuid)
@@ -23,9 +23,9 @@
            :fitness-score (fitness-function genes))))
 
 (defn build-population
-  [population-size allele-set sequence-length fitness-function]
+  [population-size alleles sequence-length fitness-function]
   (repeatedly population-size
-              #(build-individual allele-set sequence-length fitness-function)))
+              #(build-individual alleles sequence-length fitness-function)))
 
 (defn weighted-selection-of-population
   [population total-retrieved & [replace?]]
