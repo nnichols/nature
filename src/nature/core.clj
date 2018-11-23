@@ -38,6 +38,6 @@
   [& args]
   (run! println
         (weighted-selection-of-population
-         (build-population 50 [1 0] 50 (partial apply +))
+         (build-population 500 [1 0] 500 (partial apply +))
          10
          true)))
