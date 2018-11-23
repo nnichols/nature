@@ -1,34 +1,43 @@
 (ns nature.core
-  (:require [clojure.spec.alpha :as s])
+  (:require [nature.spec :as s]
+            [bigml.sampling.simple :as bss])
   (:gen-class))
 
 (defn uuid
   []
   (str (java.util.UUID/randomUUID)))
 
-(def data-model
-  {:genetic-sequence [0 1 0 1 1 1]
-   :guid (uuid)
-   :age 1
-   :fitness-score 0.1M})
+(defn generate-sequence
+  [alleles sequence-length]
+  (repeatedly sequence-length #(rand-nth alleles)))
 
-(s/def ::genetic-sequence
-  (s/and vector?
-         #(not (empty? %))))
+(defn build-individual
+  "Create a generated individual"
+  [alleles sequence-length fitness-function]
+  (let [genes (generate-sequence alleles sequence-length)]
+    (assoc {}
+           :genetic-sequence genes
+           :guid (uuid)
+           :parents ["Initializer"]
+           :age 0
+           :fitness-score (fitness-function genes))))
 
-(s/def ::guid string?)
+(defn build-population
+  [population-size alleles sequence-length fitness-function]
+  (repeatedly population-size
+              #(build-individual alleles sequence-length fitness-function)))
 
-(s/def ::age integer?)
-
-(s/def ::fitness-score decimal?)
-
-(s/def ::individual
-  (s/keys :req-un [::genetic-sequence
-                   ::guid
-                   ::age
-                   ::fitness-score]))
+(defn weighted-selection-of-population
+  [population total-retrieved & [replace?]]
+  (take total-retrieved (bss/sample population
+                                    :weigh #(:fitness-score %)
+                                    :replace replace?)))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (println (s/valid? ::individual data-model)))
+  (run! println
+        (weighted-selection-of-population
+         (build-population 500 [1 0] 500 (partial apply +))
+         10
+         true)))

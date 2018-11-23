@@ -4,6 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0-alpha20"]
+                 [bigml/sampling "3.2"]
                  [com.taoensso/tufte "2.0.1"]
                  [com.clojure-goes-fast/clj-memory-meter "0.1.2"]]
   :plugins [[lein-codox "0.10.5"]]

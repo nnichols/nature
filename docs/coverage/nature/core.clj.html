@@ -8,7 +8,7 @@
                 001&nbsp;&nbsp;(ns&nbsp;nature.core
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                002&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[clojure.spec.alpha&nbsp;:as&nbsp;s])
+                002&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[nature.spec&nbsp;:as&nbsp;s])
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
                 003&nbsp;&nbsp;&nbsp;&nbsp;(:gen-class))
@@ -29,82 +29,46 @@
                 008&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                009&nbsp;&nbsp;(def&nbsp;data-model
+                009&nbsp;&nbsp;(defn&nbsp;build-individual
                 </span><br/>
-<span class="covered" title="14 out of 14 forms covered">
-                010&nbsp;&nbsp;&nbsp;&nbsp;{:genetic-sequence&nbsp;[0&nbsp;1&nbsp;0&nbsp;1&nbsp;1&nbsp;1]
+<span class="not-tracked" title="0 out of 0 forms covered">
+                010&nbsp;&nbsp;&nbsp;&nbsp;&quot;Create&nbsp;a&nbsp;generated&nbsp;individual&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                011&nbsp;&nbsp;&nbsp;&nbsp;[allele-set&nbsp;sequence-length&nbsp;fitness-function]
+                </span><br/>
+<span class="covered" title="8 out of 8 forms covered">
+                012&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[genes&nbsp;(repeatedly&nbsp;sequence-length&nbsp;#(rand-nth&nbsp;allele-set))]
+                </span><br/>
+<span class="covered" title="10 out of 10 forms covered">
+                013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(assoc&nbsp;{}&nbsp;:genetic-sequence&nbsp;genes
                 </span><br/>
 <span class="covered" title="2 out of 2 forms covered">
-                011&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:guid&nbsp;(uuid)
+                014&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:guid&nbsp;(uuid)
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                015&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:parents&nbsp;[&quot;Initializer&quot;]
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                012&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:age&nbsp;1
+                016&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:age&nbsp;0
                 </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:fitness-score&nbsp;0.1M})
-                </span><br/>
-<span class="blank" title="0 out of 0 forms covered">
-                014&nbsp;&nbsp;
-                </span><br/>
-<span class="covered" title="4 out of 4 forms covered">
-                015&nbsp;&nbsp;(s&#x2F;def&nbsp;::genetic-sequence
-                </span><br/>
-<span class="covered" title="7 out of 7 forms covered">
-                016&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;and&nbsp;vector?
-                </span><br/>
-<span class="not-covered" title="0 out of 5 forms covered">
-                017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(not&nbsp;(empty?&nbsp;%))))
+<span class="covered" title="3 out of 3 forms covered">
+                017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:fitness-score&nbsp;(fitness-function&nbsp;genes))))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
                 018&nbsp;&nbsp;
                 </span><br/>
-<span class="covered" title="5 out of 5 forms covered">
-                019&nbsp;&nbsp;(s&#x2F;def&nbsp;::guid&nbsp;string?)
-                </span><br/>
-<span class="blank" title="0 out of 0 forms covered">
-                020&nbsp;&nbsp;
-                </span><br/>
-<span class="covered" title="5 out of 5 forms covered">
-                021&nbsp;&nbsp;(s&#x2F;def&nbsp;::age&nbsp;integer?)
-                </span><br/>
-<span class="blank" title="0 out of 0 forms covered">
-                022&nbsp;&nbsp;
-                </span><br/>
-<span class="covered" title="5 out of 5 forms covered">
-                023&nbsp;&nbsp;(s&#x2F;def&nbsp;::fitness-score&nbsp;decimal?)
-                </span><br/>
-<span class="blank" title="0 out of 0 forms covered">
-                024&nbsp;&nbsp;
-                </span><br/>
-<span class="covered" title="4 out of 4 forms covered">
-                025&nbsp;&nbsp;(s&#x2F;def&nbsp;::individual
-                </span><br/>
-<span class="partial" title="32 out of 86 forms covered">
-                026&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;keys&nbsp;:req-un&nbsp;[::genetic-sequence
-                </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::guid
-                </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::age
-                </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::fitness-score]))
-                </span><br/>
-<span class="blank" title="0 out of 0 forms covered">
-                030&nbsp;&nbsp;
-                </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                031&nbsp;&nbsp;(defn&nbsp;-main
+                019&nbsp;&nbsp;(defn&nbsp;-main
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                032&nbsp;&nbsp;&nbsp;&nbsp;&quot;I&nbsp;don&#x27;t&nbsp;do&nbsp;a&nbsp;whole&nbsp;lot&nbsp;...&nbsp;yet.&quot;
+                020&nbsp;&nbsp;&nbsp;&nbsp;&quot;I&nbsp;don&#x27;t&nbsp;do&nbsp;a&nbsp;whole&nbsp;lot&nbsp;...&nbsp;yet.&quot;
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                033&nbsp;&nbsp;&nbsp;&nbsp;[&amp;&nbsp;args]
+                021&nbsp;&nbsp;&nbsp;&nbsp;[&amp;&nbsp;args]
                 </span><br/>
-<span class="not-covered" title="0 out of 6 forms covered">
-                034&nbsp;&nbsp;&nbsp;&nbsp;(println&nbsp;(s&#x2F;valid?&nbsp;::individual&nbsp;data-model)))
+<span class="not-covered" title="0 out of 12 forms covered">
+                022&nbsp;&nbsp;&nbsp;&nbsp;(println&nbsp;(build-individual&nbsp;[1&nbsp;0]&nbsp;5&nbsp;(partial&nbsp;apply&nbsp;+))))
                 </span><br/>
  </body>
 </html>
