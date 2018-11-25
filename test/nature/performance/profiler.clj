@@ -10,4 +10,3 @@
    (p :generate-sequence (core/generate-sequence [1 0] 500))
    (p :build-individual (core/build-individual [1 0] 500 (partial apply +)))
    (p :build-population (core/build-population 500 [1 0] 500 (partial apply +)))))
-
