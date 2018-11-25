@@ -28,10 +28,10 @@
               #(build-individual alleles sequence-length fitness-function)))
 
 (defn weighted-selection-of-population
-  [population total-retrieved & [replace?]]
-  (take total-retrieved (bss/sample population
-                                    :weigh #(:fitness-score %)
-                                    :replace replace?)))
+  ([population total-retrieved]
+   (take total-retrieved (bss/sample population :weigh #(:fitness-score %) :replace true)))
+  ([population total-retrieved replace?]
+   (take total-retrieved (bss/sample population :weigh #(:fitness-score %) :replace replace?))))
 
 (defn -main
   "I don't do a whole lot ... yet."
