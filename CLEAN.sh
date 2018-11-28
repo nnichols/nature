@@ -12,10 +12,6 @@ echo "Eastwood Linting"
 lein eastwood
 
 echo " "
-echo "Eastwood Linting"
-lein cloverage
-
-echo " "
 echo "Unit Tests & Coverage Reporting"
 lein cloverage -o docs/coverage
 
