@@ -14,4 +14,4 @@ View Cloverage Reports here: https://nnichols.github.io/nature/coverage/index.ht
 
 Copyright © 2018 Nick Nichols
 
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+Distributed under the Eclipse Public License version 1.0
