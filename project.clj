@@ -11,6 +11,7 @@
   :bikeshed {:long-lines false}
   :eastwood {:add-linters [:keyword-typos :unused-fn-args :unused-private-vars]}
   :codox {:output-path "docs/api"}
+  :jvm-opts ["-Djdk.attach.allowAttachSelf"]
   :main ^:skip-aot nature.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
