@@ -1,14 +1,20 @@
 (ns nature.spec
   (:require [clojure.spec.alpha :as s]))
 
+(defn not-empty?
+  "A predicate version of not-empty, because it's a sensible feeature"
+  [coll]
+  (not (empty? coll)))
+
 (s/def ::genetic-sequence
   (s/and coll?
-         not-empty))
+         not-empty?))
 
 (s/def ::guid string?)
 
 (s/def ::parents
-  (s/coll-of string?))
+  (s/and coll?
+         not-empty?))
 
 (s/def ::age integer?)
 
