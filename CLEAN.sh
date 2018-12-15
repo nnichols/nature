@@ -22,3 +22,7 @@ lein cloverage -o docs/coverage
 echo " "
 echo "API Reporting"
 lein codox
+
+echo " "
+echo "Dead Code Reporting"
+lein yagni
