@@ -4,6 +4,7 @@
   (:gen-class))
 
 (defn fitness-based-scanning-allele
+  "Pick one of two alleles"
   [allele-1 allele-2 percent-1 percent-2]
   (if (< percent-1 (rand-int 100))
     allele-1
