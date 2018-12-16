@@ -11,7 +11,7 @@
   [0 1])
 
 (defn integer-genome
-  ([] (range 10))
-  ([top] (range top))
-  ([top bottom] (range top bottom))
-  ([top bottom step] (range top bottom step)))
+  ([] (map inc (range 10)))
+  ([top] (map inc (range top)))
+  ([top bottom] (range bottom (inc top)))
+  ([top bottom step] (range bottom (inc top) step)))

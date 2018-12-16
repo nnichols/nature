@@ -46,8 +46,4 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (let [population (build-population 20 [0 1] 10 (partial apply +))]
-    (println (loop [new-population '()]
-               (if (>= (count new-population) (count population))
-                 new-population
-                 (recur (concat new-population (weighted-selection-of-population population 4))))))))
+  (println "¯\\_(ツ)_/¯"))
