@@ -26,10 +26,10 @@
 
 (deftest build-individual-footprint
   (testing "Ensure memory usage grows sustainably, and report usage to user"
-    (let [length-10  (mm/measure (doall (core/build-individual [1 0] 10  (partial apply +))))
-          length-50  (mm/measure (doall (core/build-individual [1 0] 50  (partial apply +))))
-          length-100 (mm/measure (doall (core/build-individual [1 0] 100 (partial apply +))))
-          length-500 (mm/measure (doall (core/build-individual [1 0] 500 (partial apply +))))]
+    (let [length-10  (mm/measure (doall (core/build-individual (core/generate-sequence [1 0] 10)  (partial apply +))))
+          length-50  (mm/measure (doall (core/build-individual (core/generate-sequence [1 0] 50)  (partial apply +))))
+          length-100 (mm/measure (doall (core/build-individual (core/generate-sequence [1 0] 100) (partial apply +))))
+          length-500 (mm/measure (doall (core/build-individual (core/generate-sequence [1 0] 500) (partial apply +))))]
       (is (nil? (println "core/build-individual memory footprint (Binary), Length 10: " length-10)))
       (is (nil? (println "core/build-individual memory footprint (Binary), Length 50: " length-50)))
       (is (nil? (println "core/build-individual memory footprint (Binary), Length 100: " length-100)))

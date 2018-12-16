@@ -1,0 +1,161 @@
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="../coverage.css"/>  <title> nature/genetic_operators.clj </title>
+ </head>
+ <body>
+<span class="covered" title="1 out of 1 forms covered">
+                001&nbsp;&nbsp;(ns&nbsp;nature.genetic-operators
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                002&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[nature.core&nbsp;:as&nbsp;nature]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[nature.population-presets&nbsp;:as&nbsp;pp])
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                004&nbsp;&nbsp;&nbsp;&nbsp;(:gen-class))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                005&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                006&nbsp;&nbsp;(defn&nbsp;fitness-based-scanning-allele
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                007&nbsp;&nbsp;&nbsp;&nbsp;&quot;Pick&nbsp;one&nbsp;of&nbsp;two&nbsp;alleles&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                008&nbsp;&nbsp;&nbsp;&nbsp;[allele-1&nbsp;allele-2&nbsp;percent-1&nbsp;percent-2]
+                </span><br/>
+<span class="covered" title="7 out of 7 forms covered">
+                009&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&lt;&nbsp;percent-1&nbsp;(rand-int&nbsp;100))
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;allele-1
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                011&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;allele-2))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                012&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                013&nbsp;&nbsp;(defn&nbsp;fitness-based-scanning-genome
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                014&nbsp;&nbsp;&nbsp;&nbsp;[individual-1&nbsp;individual-2&nbsp;percent-1&nbsp;percent-2]
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                015&nbsp;&nbsp;&nbsp;&nbsp;(loop&nbsp;[new-genome&nbsp;&#x27;()
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                016&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ind-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;individual-1
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ind-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;individual-2]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(empty?&nbsp;ind-1)
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new-genome
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recur&nbsp;(cons&nbsp;(fitness-based-scanning-allele&nbsp;(first&nbsp;ind-1)&nbsp;(first&nbsp;ind-2)&nbsp;percent-1&nbsp;percent-2)&nbsp;new-genome)
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(rest&nbsp;ind-1)
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(rest&nbsp;ind-2)))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                023&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                024&nbsp;&nbsp;(defn&nbsp;fitness-based-scanning
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                025&nbsp;&nbsp;&nbsp;&nbsp;[individual-1&nbsp;individual-2&nbsp;fitness-function]
+                </span><br/>
+<span class="covered" title="9 out of 9 forms covered">
+                026&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[fitness-total&nbsp;(+&nbsp;(:fitness-score&nbsp;individual-1)&nbsp;(:fitness-score&nbsp;individual-2))
+                </span><br/>
+<span class="covered" title="9 out of 9 forms covered">
+                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;percent-1&nbsp;(*&nbsp;100&nbsp;(&#x2F;&nbsp;(:fitness-score&nbsp;individual-1)&nbsp;fitness-total))
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;percent-2&nbsp;(-&nbsp;100&nbsp;percent-1)]
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(nature&#x2F;build-individual
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fitness-based-scanning-genome&nbsp;(:genetic-sequence&nbsp;individual-1)
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                031&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(:genetic-sequence&nbsp;individual-2)
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                032&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;percent-1
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                033&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;percent-2)
+                </span><br/>
+<span class="covered" title="8 out of 8 forms covered">
+                034&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(vector&nbsp;(:guid&nbsp;individual-1)&nbsp;(:guid&nbsp;individual-2))
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                035&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-age
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                036&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fitness-function)))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                037&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                038&nbsp;&nbsp;(defn&nbsp;crossover
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                039&nbsp;&nbsp;&nbsp;&nbsp;[individual-1&nbsp;individual-2&nbsp;fitness-function]
+                </span><br/>
+<span class="covered" title="6 out of 6 forms covered">
+                040&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[crossover-point&nbsp;(rand-int&nbsp;(count&nbsp;individual-1))
+                </span><br/>
+<span class="covered" title="6 out of 6 forms covered">
+                041&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;split-1&nbsp;(split-at&nbsp;crossover-point&nbsp;(:genetic-sequence&nbsp;individual-1))
+                </span><br/>
+<span class="covered" title="6 out of 6 forms covered">
+                042&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;split-2&nbsp;(split-at&nbsp;crossover-point&nbsp;(:genetic-sequence&nbsp;individual-2))
+                </span><br/>
+<span class="covered" title="8 out of 8 forms covered">
+                043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parents&nbsp;(vector&nbsp;(:guid&nbsp;individual-1)&nbsp;(:guid&nbsp;individual-2))]
+                </span><br/>
+<span class="covered" title="12 out of 12 forms covered">
+                044&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;(nature&#x2F;build-individual&nbsp;(concat&nbsp;(first&nbsp;split-1)&nbsp;(last&nbsp;split-2))
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                045&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parents
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                046&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-age
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                047&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fitness-function)
+                </span><br/>
+<span class="covered" title="10 out of 10 forms covered">
+                048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(nature&#x2F;build-individual&nbsp;(concat&nbsp;(first&nbsp;split-2)&nbsp;(last&nbsp;split-1))
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                049&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parents
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                050&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-age
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                051&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fitness-function))))
+                </span><br/>
+ </body>
+</html>

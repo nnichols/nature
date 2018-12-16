@@ -1,4 +1,5 @@
-(ns nature.population-presets)
+(ns nature.population-presets
+  "Commonly used alleles and settings to help reign in magic constants")
 
 (def initializer-name
   (vector "Initializer"))

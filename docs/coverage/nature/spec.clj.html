@@ -8,79 +8,100 @@
                 001&nbsp;&nbsp;(ns&nbsp;nature.spec
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                002&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[clojure.spec.alpha&nbsp;:as&nbsp;s]))
+                002&nbsp;&nbsp;&nbsp;&nbsp;&quot;Common&nbsp;specs&#x2F;api&nbsp;checks&nbsp;for&nbsp;core&nbsp;nature&nbsp;functions&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                003&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[clojure.spec.alpha&nbsp;:as&nbsp;s]))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                003&nbsp;&nbsp;
-                </span><br/>
-<span class="covered" title="4 out of 4 forms covered">
-                004&nbsp;&nbsp;(s&#x2F;def&nbsp;::genetic-sequence
-                </span><br/>
-<span class="covered" title="6 out of 6 forms covered">
-                005&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;and&nbsp;coll?
+                004&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                006&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not-empty))
+                005&nbsp;&nbsp;(defn&nbsp;not-empty?
                 </span><br/>
-<span class="blank" title="0 out of 0 forms covered">
-                007&nbsp;&nbsp;
+<span class="not-tracked" title="0 out of 0 forms covered">
+                006&nbsp;&nbsp;&nbsp;&nbsp;&quot;A&nbsp;predicate&nbsp;version&nbsp;of&nbsp;not-empty,&nbsp;because&nbsp;it&#x27;s&nbsp;a&nbsp;sensible&nbsp;feeature&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                007&nbsp;&nbsp;&nbsp;&nbsp;[coll]
                 </span><br/>
 <span class="covered" title="5 out of 5 forms covered">
-                008&nbsp;&nbsp;(s&#x2F;def&nbsp;::guid&nbsp;string?)
+                008&nbsp;&nbsp;&nbsp;&nbsp;(not&nbsp;(empty?&nbsp;coll)))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
                 009&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="4 out of 4 forms covered">
-                010&nbsp;&nbsp;(s&#x2F;def&nbsp;::parents
+                010&nbsp;&nbsp;(s&#x2F;def&nbsp;::genetic-sequence
                 </span><br/>
 <span class="covered" title="6 out of 6 forms covered">
                 011&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;and&nbsp;coll?
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                012&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not-empty))
+                012&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not-empty?))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
                 013&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="5 out of 5 forms covered">
-                014&nbsp;&nbsp;(s&#x2F;def&nbsp;::age&nbsp;integer?)
+                014&nbsp;&nbsp;(s&#x2F;def&nbsp;::guid&nbsp;string?)
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
                 015&nbsp;&nbsp;
                 </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                016&nbsp;&nbsp;(s&#x2F;def&nbsp;::parents
+                </span><br/>
+<span class="covered" title="6 out of 6 forms covered">
+                017&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;and&nbsp;coll?
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not-empty?))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                019&nbsp;&nbsp;
+                </span><br/>
 <span class="covered" title="5 out of 5 forms covered">
-                016&nbsp;&nbsp;(s&#x2F;def&nbsp;::fitness-score&nbsp;number?)
+                020&nbsp;&nbsp;(s&#x2F;def&nbsp;::age&nbsp;integer?)
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                017&nbsp;&nbsp;
+                021&nbsp;&nbsp;
                 </span><br/>
-<span class="covered" title="4 out of 4 forms covered">
-                018&nbsp;&nbsp;(s&#x2F;def&nbsp;::individual
-                </span><br/>
-<span class="partial" title="75 out of 99 forms covered">
-                019&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;keys&nbsp;:req-un&nbsp;[::genetic-sequence
-                </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::guid
-                </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::parents
-                </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::age
-                </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::fitness-score]))
+<span class="covered" title="5 out of 5 forms covered">
+                022&nbsp;&nbsp;(s&#x2F;def&nbsp;::fitness-score&nbsp;number?)
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                024&nbsp;&nbsp;
+                023&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="4 out of 4 forms covered">
-                025&nbsp;&nbsp;(s&#x2F;def&nbsp;::population
+                024&nbsp;&nbsp;(s&#x2F;def&nbsp;::individual
                 </span><br/>
-<span class="covered" title="21 out of 21 forms covered">
-                026&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;coll-of&nbsp;#(s&#x2F;valid?&nbsp;::individual&nbsp;%)))
+<span class="partial" title="76 out of 99 forms covered">
+                025&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;keys&nbsp;:req-un&nbsp;[::genetic-sequence
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::guid
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::parents
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::age
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::fitness-score]))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                030&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                031&nbsp;&nbsp;(s&#x2F;def&nbsp;::population
+                </span><br/>
+<span class="partial" title="23 out of 26 forms covered">
+                032&nbsp;&nbsp;&nbsp;&nbsp;(s&#x2F;and&nbsp;#(s&#x2F;coll-of&nbsp;(s&#x2F;valid?&nbsp;::individual&nbsp;%))
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                033&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;not-empty?))
                 </span><br/>
  </body>
 </html>

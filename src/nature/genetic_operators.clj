@@ -21,6 +21,20 @@
              (rest ind-1)
              (rest ind-2)))))
 
+(defn fitness-based-scanning
+  [individual-1 individual-2 fitness-function]
+  (let [fitness-total (+ (:fitness-score individual-1) (:fitness-score individual-2))
+        percent-1 (* 100 (/ (:fitness-score individual-1) fitness-total))
+        percent-2 (- 100 percent-1)]
+    (nature/build-individual
+     (fitness-based-scanning-genome (:genetic-sequence individual-1)
+                                    (:genetic-sequence individual-2)
+                                    percent-1
+                                    percent-2)
+     (vector (:guid individual-1) (:guid individual-2))
+     pp/default-age
+     fitness-function)))
+
 (defn crossover
   [individual-1 individual-2 fitness-function]
   (let [crossover-point (rand-int (count individual-1))
@@ -35,17 +49,3 @@
                                    parents
                                    pp/default-age
                                    fitness-function))))
-
-(defn fitness-based-scanning
-  [individual-1 individual-2 fitness-function]
-  (let [fitness-total (+ (:fitness-score individual-1) (:fitness-score individual-2))
-        percent-1 (* 100 (/ (:fitness-score individual-1) fitness-total))
-        percent-2 (- 100 percent-1)]
-    (nature/build-individual
-     (fitness-based-scanning-genome (:genetic-sequence individual-1)
-                                    (:genetic-sequence individual-2)
-                                    percent-1
-                                    percent-2)
-     (vector (:guid individual-1) (:guid individual-2))
-     pp/default-age
-     fitness-function)))

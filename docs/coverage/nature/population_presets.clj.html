@@ -5,34 +5,55 @@
  </head>
  <body>
 <span class="covered" title="1 out of 1 forms covered">
-                001&nbsp;&nbsp;(ns&nbsp;nature.population-presets)
+                001&nbsp;&nbsp;(ns&nbsp;nature.population-presets
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                002&nbsp;&nbsp;&nbsp;&nbsp;&quot;Commonly&nbsp;used&nbsp;alleles&nbsp;and&nbsp;settings&nbsp;to&nbsp;help&nbsp;reign&nbsp;in&nbsp;magic&nbsp;constants&quot;)
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                002&nbsp;&nbsp;
+                003&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                003&nbsp;&nbsp;(def&nbsp;binary-genome
+                004&nbsp;&nbsp;(def&nbsp;initializer-name
                 </span><br/>
 <span class="covered" title="3 out of 3 forms covered">
-                004&nbsp;&nbsp;&nbsp;&nbsp;[0&nbsp;1])
+                005&nbsp;&nbsp;&nbsp;&nbsp;(vector&nbsp;&quot;Initializer&quot;))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                005&nbsp;&nbsp;
+                006&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                007&nbsp;&nbsp;(def&nbsp;default-age
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                008&nbsp;&nbsp;&nbsp;&nbsp;0)
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                009&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                006&nbsp;&nbsp;(defn&nbsp;integer-genome
+                010&nbsp;&nbsp;(def&nbsp;binary-genome
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                011&nbsp;&nbsp;&nbsp;&nbsp;[0&nbsp;1])
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                012&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                013&nbsp;&nbsp;(defn&nbsp;integer-genome
                 </span><br/>
 <span class="not-covered" title="0 out of 3 forms covered">
-                007&nbsp;&nbsp;&nbsp;&nbsp;([]&nbsp;(range&nbsp;10))
+                014&nbsp;&nbsp;&nbsp;&nbsp;([]&nbsp;(range&nbsp;10))
                 </span><br/>
 <span class="not-covered" title="0 out of 3 forms covered">
-                008&nbsp;&nbsp;&nbsp;&nbsp;([max]&nbsp;(range&nbsp;max))
+                015&nbsp;&nbsp;&nbsp;&nbsp;([top]&nbsp;(range&nbsp;top))
                 </span><br/>
 <span class="not-covered" title="0 out of 4 forms covered">
-                009&nbsp;&nbsp;&nbsp;&nbsp;([max&nbsp;min]&nbsp;(range&nbsp;max&nbsp;min))
+                016&nbsp;&nbsp;&nbsp;&nbsp;([top&nbsp;bottom]&nbsp;(range&nbsp;top&nbsp;bottom))
                 </span><br/>
 <span class="not-covered" title="0 out of 5 forms covered">
-                010&nbsp;&nbsp;&nbsp;&nbsp;([max&nbsp;min&nbsp;step]&nbsp;(range&nbsp;max&nbsp;min&nbsp;step)))
+                017&nbsp;&nbsp;&nbsp;&nbsp;([top&nbsp;bottom&nbsp;step]&nbsp;(range&nbsp;top&nbsp;bottom&nbsp;step)))
                 </span><br/>
  </body>
 </html>

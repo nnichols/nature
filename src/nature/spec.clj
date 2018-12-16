@@ -1,4 +1,5 @@
 (ns nature.spec
+  "Common specs/api checks for core nature functions"
   (:require [clojure.spec.alpha :as s]))
 
 (defn not-empty?
@@ -28,4 +29,5 @@
                    ::fitness-score]))
 
 (s/def ::population
-  (s/coll-of #(s/valid? ::individual %)))
+  (s/and #(s/coll-of (s/valid? ::individual %))
+         not-empty?))

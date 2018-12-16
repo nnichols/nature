@@ -11,136 +11,157 @@
                 002&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[nature.spec&nbsp;:as&nbsp;s]
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[bigml.sampling.simple&nbsp;:as&nbsp;bss])
+                003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[nature.population-presets&nbsp;:as&nbsp;pp]
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                004&nbsp;&nbsp;&nbsp;&nbsp;(:gen-class))
+                004&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[bigml.sampling.simple&nbsp;:as&nbsp;bss])
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                005&nbsp;&nbsp;&nbsp;&nbsp;(:gen-class))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                005&nbsp;&nbsp;
+                006&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                006&nbsp;&nbsp;(defn&nbsp;uuid
+                007&nbsp;&nbsp;(defn&nbsp;uuid
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                007&nbsp;&nbsp;&nbsp;&nbsp;&quot;More&nbsp;idiomatic&nbsp;wrapper&nbsp;around&nbsp;Java&#x27;s&nbsp;v1&nbsp;UUID&nbsp;functionality&quot;
+                008&nbsp;&nbsp;&nbsp;&nbsp;&quot;More&nbsp;idiomatic&nbsp;wrapper&nbsp;around&nbsp;Java&#x27;s&nbsp;v1&nbsp;UUID&nbsp;functionality&quot;
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                008&nbsp;&nbsp;&nbsp;&nbsp;[]
+                009&nbsp;&nbsp;&nbsp;&nbsp;[]
                 </span><br/>
 <span class="covered" title="3 out of 3 forms covered">
-                009&nbsp;&nbsp;&nbsp;&nbsp;(str&nbsp;(java.util.UUID&#x2F;randomUUID)))
+                010&nbsp;&nbsp;&nbsp;&nbsp;(str&nbsp;(java.util.UUID&#x2F;randomUUID)))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                010&nbsp;&nbsp;
+                011&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                011&nbsp;&nbsp;(defn&nbsp;generate-sequence
+                012&nbsp;&nbsp;(defn&nbsp;generate-sequence
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                012&nbsp;&nbsp;&nbsp;&nbsp;&quot;Creates&nbsp;a&nbsp;genetic&nbsp;sequence&nbsp;of&nbsp;&#x27;sequence-length&#x27;&nbsp;elements,
+                013&nbsp;&nbsp;&nbsp;&nbsp;&quot;Creates&nbsp;a&nbsp;genetic&nbsp;sequence&nbsp;of&nbsp;`sequence-length`&nbsp;elements,
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                013&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;each&nbsp;item&nbsp;is&nbsp;in&nbsp;the&nbsp;collection&nbsp;of&nbsp;`alleles`&quot;
+                014&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;each&nbsp;item&nbsp;is&nbsp;in&nbsp;the&nbsp;collection&nbsp;of&nbsp;`alleles`&quot;
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                014&nbsp;&nbsp;&nbsp;&nbsp;[alleles&nbsp;sequence-length]
+                015&nbsp;&nbsp;&nbsp;&nbsp;[alleles&nbsp;sequence-length]
                 </span><br/>
 <span class="covered" title="7 out of 7 forms covered">
-                015&nbsp;&nbsp;&nbsp;&nbsp;(repeatedly&nbsp;sequence-length&nbsp;#(rand-nth&nbsp;alleles)))
+                016&nbsp;&nbsp;&nbsp;&nbsp;(repeatedly&nbsp;sequence-length&nbsp;#(rand-nth&nbsp;alleles)))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                016&nbsp;&nbsp;
+                017&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                017&nbsp;&nbsp;(defn&nbsp;build-individual
+                018&nbsp;&nbsp;(defn&nbsp;build-individual
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                018&nbsp;&nbsp;&nbsp;&nbsp;&quot;Create&nbsp;a&nbsp;generated&nbsp;individual&quot;
+                019&nbsp;&nbsp;&nbsp;&nbsp;&quot;Create&nbsp;a&nbsp;generated&nbsp;individual&quot;
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                019&nbsp;&nbsp;&nbsp;&nbsp;[alleles&nbsp;sequence-length&nbsp;fitness-function]
+                020&nbsp;&nbsp;&nbsp;&nbsp;([genetic-sequence&nbsp;fitness-function]
                 </span><br/>
-<span class="covered" title="5 out of 5 forms covered">
-                020&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[genes&nbsp;(generate-sequence&nbsp;alleles&nbsp;sequence-length)]
-                </span><br/>
-<span class="covered" title="9 out of 9 forms covered">
-                021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(assoc&nbsp;{}
+<span class="covered" title="8 out of 8 forms covered">
+                021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(assoc&nbsp;{}
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:genetic-sequence&nbsp;genes
+                022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:genetic-sequence&nbsp;genetic-sequence
                 </span><br/>
 <span class="covered" title="2 out of 2 forms covered">
-                023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:guid&nbsp;(uuid)
+                023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:guid&nbsp;(uuid)
                 </span><br/>
-<span class="covered" title="2 out of 2 forms covered">
-                024&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:parents&nbsp;[&quot;Initializer&quot;]
+<span class="covered" title="1 out of 1 forms covered">
+                024&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:parents&nbsp;pp&#x2F;initializer-name
                 </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                025&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:age&nbsp;0
+<span class="covered" title="1 out of 1 forms covered">
+                025&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:age&nbsp;pp&#x2F;default-age
                 </span><br/>
 <span class="covered" title="3 out of 3 forms covered">
-                026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:fitness-score&nbsp;(fitness-function&nbsp;genes))))
+                026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:fitness-score&nbsp;(fitness-function&nbsp;genetic-sequence)))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
                 027&nbsp;&nbsp;
                 </span><br/>
-<span class="covered" title="1 out of 1 forms covered">
-                028&nbsp;&nbsp;(defn&nbsp;build-population
-                </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                029&nbsp;&nbsp;&nbsp;&nbsp;[population-size&nbsp;alleles&nbsp;sequence-length&nbsp;fitness-function]
+                028&nbsp;&nbsp;&nbsp;&nbsp;([genetic-sequence&nbsp;parent-coll&nbsp;age&nbsp;fitness-function]
                 </span><br/>
-<span class="covered" title="4 out of 4 forms covered">
-                030&nbsp;&nbsp;&nbsp;&nbsp;(repeatedly&nbsp;population-size
+<span class="covered" title="8 out of 8 forms covered">
+                029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(assoc&nbsp;{}
                 </span><br/>
-<span class="covered" title="5 out of 5 forms covered">
-                031&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(build-individual&nbsp;alleles&nbsp;sequence-length&nbsp;fitness-function)))
+<span class="covered" title="1 out of 1 forms covered">
+                030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:genetic-sequence&nbsp;genetic-sequence
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                031&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:guid&nbsp;(uuid)
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                032&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:parents&nbsp;parent-coll
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                033&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:age&nbsp;age
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                034&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:fitness-score&nbsp;(fitness-function&nbsp;genetic-sequence))))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                032&nbsp;&nbsp;
+                035&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                033&nbsp;&nbsp;(defn&nbsp;weighted-selection-of-population
+                036&nbsp;&nbsp;(defn&nbsp;build-population
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                034&nbsp;&nbsp;&nbsp;&nbsp;([population&nbsp;total-retrieved]
+                037&nbsp;&nbsp;&nbsp;&nbsp;[population-size&nbsp;alleles&nbsp;sequence-length&nbsp;fitness-function]
                 </span><br/>
-<span class="covered" title="13 out of 13 forms covered">
-                035&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(take&nbsp;total-retrieved&nbsp;(bss&#x2F;sample&nbsp;population&nbsp;:weigh&nbsp;#(:fitness-score&nbsp;%)&nbsp;:replace&nbsp;true)))
-                </span><br/>
-<span class="not-tracked" title="0 out of 0 forms covered">
-                036&nbsp;&nbsp;&nbsp;&nbsp;([population&nbsp;total-retrieved&nbsp;replace?]
-                </span><br/>
-<span class="covered" title="13 out of 13 forms covered">
-                037&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(take&nbsp;total-retrieved&nbsp;(bss&#x2F;sample&nbsp;population&nbsp;:weigh&nbsp;#(:fitness-score&nbsp;%)&nbsp;:replace&nbsp;replace?))))
+<span class="covered" title="11 out of 11 forms covered">
+                038&nbsp;&nbsp;&nbsp;&nbsp;(repeatedly&nbsp;population-size&nbsp;#(build-individual&nbsp;(generate-sequence&nbsp;alleles&nbsp;sequence-length)&nbsp;fitness-function)))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                038&nbsp;&nbsp;
+                039&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                039&nbsp;&nbsp;(defn&nbsp;-main
+                040&nbsp;&nbsp;(defn&nbsp;weighted-selection-of-population
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                040&nbsp;&nbsp;&nbsp;&nbsp;&quot;I&nbsp;don&#x27;t&nbsp;do&nbsp;a&nbsp;whole&nbsp;lot&nbsp;...&nbsp;yet.&quot;
+                041&nbsp;&nbsp;&nbsp;&nbsp;([population&nbsp;total-retrieved]
+                </span><br/>
+<span class="covered" title="13 out of 13 forms covered">
+                042&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(take&nbsp;total-retrieved&nbsp;(bss&#x2F;sample&nbsp;population&nbsp;:weigh&nbsp;#(:fitness-score&nbsp;%)&nbsp;:replace&nbsp;true)))
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                041&nbsp;&nbsp;&nbsp;&nbsp;[&amp;&nbsp;args]
+                043&nbsp;&nbsp;&nbsp;&nbsp;([population&nbsp;total-retrieved&nbsp;replace?]
+                </span><br/>
+<span class="covered" title="13 out of 13 forms covered">
+                044&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(take&nbsp;total-retrieved&nbsp;(bss&#x2F;sample&nbsp;population&nbsp;:weigh&nbsp;#(:fitness-score&nbsp;%)&nbsp;:replace&nbsp;replace?))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                045&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                046&nbsp;&nbsp;(defn&nbsp;-main
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                047&nbsp;&nbsp;&nbsp;&nbsp;&quot;I&nbsp;don&#x27;t&nbsp;do&nbsp;a&nbsp;whole&nbsp;lot&nbsp;...&nbsp;yet.&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                048&nbsp;&nbsp;&nbsp;&nbsp;[&amp;&nbsp;args]
                 </span><br/>
 <span class="not-covered" title="0 out of 12 forms covered">
-                042&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[population&nbsp;(build-population&nbsp;20&nbsp;[0&nbsp;1]&nbsp;10&nbsp;(partial&nbsp;apply&nbsp;+))]
+                049&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[population&nbsp;(build-population&nbsp;20&nbsp;[0&nbsp;1]&nbsp;10&nbsp;(partial&nbsp;apply&nbsp;+))]
                 </span><br/>
 <span class="not-covered" title="0 out of 4 forms covered">
-                043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(println&nbsp;(loop&nbsp;[new-population&nbsp;&#x27;()]
+                050&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(println&nbsp;(loop&nbsp;[new-population&nbsp;&#x27;()]
                 </span><br/>
 <span class="not-covered" title="0 out of 9 forms covered">
-                044&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;(count&nbsp;new-population)&nbsp;(count&nbsp;population))
+                051&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;(count&nbsp;new-population)&nbsp;(count&nbsp;population))
                 </span><br/>
 <span class="not-covered" title="0 out of 1 forms covered">
-                045&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new-population
+                052&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new-population
                 </span><br/>
 <span class="not-covered" title="0 out of 1 forms covered">
-                046&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recur&nbsp;(concat&nbsp;new-population&nbsp;(weighted-selection-of-population&nbsp;population&nbsp;4))))))))
+                053&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recur&nbsp;(concat&nbsp;new-population&nbsp;(weighted-selection-of-population&nbsp;population&nbsp;4))))))))
                 </span><br/>
  </body>
 </html>

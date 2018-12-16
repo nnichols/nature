@@ -25,11 +25,11 @@
           :age pp/default-age
           :fitness-score (fitness-function genetic-sequence)))
 
-  ([genetic-sequence parents age fitness-function]
+  ([genetic-sequence parent-coll age fitness-function]
    (assoc {}
           :genetic-sequence genetic-sequence
           :guid (uuid)
-          :parents parents
+          :parents parent-coll
           :age age
           :fitness-score (fitness-function genetic-sequence))))
 
