@@ -16,7 +16,7 @@
   (repeatedly sequence-length #(rand-nth alleles)))
 
 (defn build-individual
-  "Create a generated individual"
+  "Generate a new individual, and evaluate the fitness of the genetic sequence."
   ([genetic-sequence fitness-function]
    (assoc {}
           :genetic-sequence genetic-sequence
@@ -34,10 +34,13 @@
           :fitness-score (fitness-function genetic-sequence))))
 
 (defn build-population
+  "Build `population-size` individuals by invoking `build-individual` on random, conforming genetic sequences."
   [population-size alleles sequence-length fitness-function]
   (repeatedly population-size #(build-individual (generate-sequence alleles sequence-length) fitness-function)))
 
 (defn weighted-selection-of-population
+  "Pick `total-retreived` individuals from `population` with a relative probability of
+  the individual's fitness score divided by the population's aggregate fitness score"
   ([population total-retrieved]
    (take total-retrieved (bss/sample population :weigh #(:fitness-score %) :replace true)))
   ([population total-retrieved replace?]

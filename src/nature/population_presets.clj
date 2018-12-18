@@ -11,6 +11,7 @@
   [0 1])
 
 (defn integer-genome
+  "A loose proxy for `range` with defaults for common needs/generative testing"
   ([] (map inc (range 10)))
   ([top] (map inc (range top)))
   ([top bottom] (range bottom (inc top)))
