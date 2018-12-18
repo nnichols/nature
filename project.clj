@@ -9,7 +9,8 @@
                  [com.clojure-goes-fast/clj-memory-meter "0.1.2"]]
   :plugins [[lein-codox "0.10.5"]]
   :bikeshed {:long-lines false}
-  :eastwood {:add-linters [:keyword-typos :unused-fn-args :unused-private-vars]}
+  :eastwood {:add-linters [:keyword-typos :unused-fn-args :unused-private-vars]
+             :exclude-namespaces [:test-paths]}
   :codox {:output-path "docs/api"}
   :jvm-opts ["-Djdk.attach.allowAttachSelf"]
   :main ^:skip-aot nature.core
