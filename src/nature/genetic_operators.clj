@@ -6,20 +6,21 @@
 (defn fitness-based-scanning-allele
   "Pick one of two alleles"
   [allele-1 allele-2 percent]
-  (if (< percent (rand-int 100))
+  (if (<= percent (rand-int 100))
     allele-1
     allele-2))
 
 (defn fitness-based-scanning-genome
-  [individual-1 individual-2 percent]
-  (loop [new-genome '()
-         ind-1      individual-1
-         ind-2      individual-2]
-    (if (empty? ind-1)
+  "Construct a new genetic sequence, where each allele is picked from a parent base on the ratio of their fitnesses"
+  [sequence-1 sequence-2 percent]
+  (loop [new-genome []
+         gs-1       sequence-1
+         gs-2       sequence-2]
+    (if (empty? gs-1)
       new-genome
-      (recur (cons (fitness-based-scanning-allele (first ind-1) (first ind-2) percent) new-genome)
-             (rest ind-1)
-             (rest ind-2)))))
+      (recur (conj new-genome (fitness-based-scanning-allele (first gs-1) (first gs-2) percent))
+             (rest gs-1)
+             (rest gs-2)))))
 
 (defn fitness-based-scanning
   [individual-1 individual-2 fitness-function]
@@ -47,3 +48,10 @@
                                    parents
                                    pp/default-age
                                    fitness-function))))
+
+(defn mutation-operator
+  [individual allele-set percent fitness-function]
+  (nature/build-individual (map #(fitness-based-scanning-allele % (rand-nth allele-set) percent) (:genetic-sequence individual))
+                           (vector (:guid individual))
+                           (inc (:age individual))
+                           fitness-function))
