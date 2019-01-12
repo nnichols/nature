@@ -1,7 +1,6 @@
 (ns nature.core
   (:require [nature.spec :as s]
-            [nature.population-presets :as pp]
-            [bigml.sampling.simple :as bss])
+            [nature.population-presets :as pp])
   (:gen-class))
 
 (defn uuid
@@ -35,20 +34,6 @@
   "Build `population-size` individuals by invoking `build-individual` on random, conforming genetic sequences."
   [population-size alleles sequence-length fitness-function]
   (repeatedly population-size #(build-individual (generate-sequence alleles sequence-length) fitness-function)))
-
-(defn weighted-selection-of-population
-  "Pick `total-retreived` individuals from `population` with a relative probability of
-  the individual's fitness score divided by the population's aggregate fitness score"
-  ([population total-retrieved]
-   (take total-retrieved (bss/sample population :weigh #(:fitness-score %) :replace true)))
-  ([population total-retrieved replace?]
-   (take total-retrieved (bss/sample population :weigh #(:fitness-score %) :replace replace?))))
-
-(defn advance-generation
-  [population fitness-function binary-operator-set unary-operator-set]
-  (repeatedly (/ (count population) 2)
-             #(apply (rand-nth binary-operator-set)
-                     [(weighted-selection-of-population population 2)])))
 
 (defn -main
   "I don't do a whole lot ... yet."

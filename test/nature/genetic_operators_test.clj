@@ -35,25 +35,11 @@
   (testing "Test extrema of percents passed to mutation"
     (let [fitness-function (partial apply +)
           individual (core/build-individual [0 0 0 0 0 0 0 0 0 0] fitness-function)
-          no-mutation (go/mutation-operator individual [1] 0 fitness-function)
-          all-mutation (go/mutation-operator individual [1] 100 fitness-function)]
+          no-mutation (go/mutation-operator fitness-function [1] 0  individual)
+          all-mutation (go/mutation-operator fitness-function [1] 100 individual)]
       (is (csa/valid? ::s/individual no-mutation))
       (is (csa/valid? ::s/individual all-mutation))
       (is (every? #(= 0 %) (:genetic-sequence no-mutation)))
       (is (every? #(= 1 %) (:genetic-sequence all-mutation)))
-      (is (= 1 (:age no-mutation) (:age all-mutation)))
+      (is (= 0 (:age no-mutation) (:age all-mutation)))
       (is (= (:parents no-mutation) (:parents all-mutation))))))
-
-(deftest advance-generation-test
-  (let [fitness-function (partial apply +)
-        sample-population (core/build-population 20
-                                                 pp/binary-genome
-                                                 20
-                                                 fitness-function)
-        new-generation (core/advance-generation sample-population
-                                                fitness-function
-                                                [(partial go/fitness-based-scanning fitness-function)
-                                                 (partial go/crossover fitness-function)]
-                                                [nil])]
-    (testing "Ensure crossover creates two valid individuals"
-      (is (csa/valid? ::s/population new-generation)))))

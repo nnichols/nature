@@ -55,10 +55,14 @@
                                    pp/default-age
                                    fitness-function))))
 
+(defn no-op
+  "A proxy for `identity` to signal when a particular operation category is not needed,
+   but the `selected-individuals` are kept in the pool"
+  [fitness-function selected-individuals]
+  (map #(inc (:age %)) selected-individuals))
+
 (defn mutation-operator
   "Construct a new individual, by flipping alleles in the genetiic sequence to a random legal allelee"
-  [individual allele-set percent fitness-function]
+  [fitness-function allele-set percent individual]
   (nature/build-individual (map #(fitness-based-scanning-allele % (rand-nth allele-set) percent) (:genetic-sequence individual))
-                           (vector (:guid individual))
-                           (inc (:age individual))
                            fitness-function))

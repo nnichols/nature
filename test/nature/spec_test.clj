@@ -39,17 +39,3 @@
                                             (inc (rand-int 100))
                                             (partial apply +))]
       (is (csa/valid? ::s/population population)))))
-
-(deftest weighted-selection-of-population-test
-  (testing "Check that selections of a population still conform to the spec, and are distinct if required"
-    (let [population (core/build-population (inc (rand-int 100))
-                                            pp/binary-genome
-                                            (inc (rand-int 100))
-                                            (partial apply +))
-          selected-population-2-arg (core/weighted-selection-of-population population 10)
-          selected-population-3-arg (core/weighted-selection-of-population population 10 true)
-          selected-partition (core/weighted-selection-of-population population 10 false)]
-      (is (csa/valid? ::s/population selected-population-2-arg))
-      (is (csa/valid? ::s/population selected-population-3-arg))
-      (is (csa/valid? ::s/population selected-partition))
-      (is (= selected-partition (distinct selected-partition))))))
