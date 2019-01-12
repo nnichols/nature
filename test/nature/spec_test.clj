@@ -24,6 +24,8 @@
       (is (csa/valid? ::s/age (:age individual)))
       (is (csa/valid? ::s/fitness-score (:fitness-score individual)))
       (is (csa/valid? ::s/individual individual))
+      (is (not (csa/valid? ::s/individual '())))
+      (is (not (csa/valid? ::s/individual {})))
       (is (not (csa/valid? ::s/individual (dissoc individual :genetic-sequence))))
       (is (not (csa/valid? ::s/individual (dissoc individual :guid))))
       (is (not (csa/valid? ::s/individual (dissoc individual :parents))))

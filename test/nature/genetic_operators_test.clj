@@ -8,18 +8,14 @@
 
 (deftest binary-operators-test
   (let [fitness-function (partial apply +)
-        sample-population (core/build-population 2 ;; Crossover is currently just a binary operation
+        sample-population (core/build-population 2
                                                  pp/binary-genome
                                                  (inc (rand-int 100))
                                                  fitness-function)]
     (testing "Ensure crossover creates two valid individuals"
-      (is (csa/valid? ::s/population (go/crossover (first sample-population)
-                                                   (second sample-population)
-                                                   fitness-function))))
+      (is (csa/valid? ::s/population (go/crossover fitness-function sample-population))))
     (testing "Ensure fitness-based scanning creates two valid individuals"
-      (is (csa/valid? ::s/population (go/fitness-based-scanning (first sample-population)
-                                                                (second sample-population)
-                                                                fitness-function))))))
+      (is (csa/valid? ::s/population (go/fitness-based-scanning fitness-function sample-population))))))
 
 (deftest fitness-based-scanning-allele-test
   (testing "Test extrema of percents passed to allele selection"
@@ -47,3 +43,17 @@
       (is (every? #(= 1 %) (:genetic-sequence all-mutation)))
       (is (= 1 (:age no-mutation) (:age all-mutation)))
       (is (= (:parents no-mutation) (:parents all-mutation))))))
+
+(deftest advance-generation-test
+  (let [fitness-function (partial apply +)
+        sample-population (core/build-population 20
+                                                 pp/binary-genome
+                                                 20
+                                                 fitness-function)
+        new-generation (core/advance-generation sample-population
+                                                fitness-function
+                                                [(partial go/fitness-based-scanning fitness-function)
+                                                 (partial go/crossover fitness-function)]
+                                                [nil])]
+    (testing "Ensure crossover creates two valid individuals"
+      (is (csa/valid? ::s/population new-generation)))))

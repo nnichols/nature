@@ -16,3 +16,4 @@ pom.xml.asc
 
 /.commit-style.txt
 *.DS_Store
+*.bkp

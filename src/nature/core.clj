@@ -18,16 +18,14 @@
 (defn build-individual
   "Generate a new individual, and evaluate the fitness of the genetic sequence."
   ([genetic-sequence fitness-function]
-   (assoc {}
-          :genetic-sequence genetic-sequence
+   (assoc {} :genetic-sequence genetic-sequence
           :guid (uuid)
           :parents pp/initializer-name
           :age pp/default-age
           :fitness-score (fitness-function genetic-sequence)))
 
   ([genetic-sequence parent-coll age fitness-function]
-   (assoc {}
-          :genetic-sequence genetic-sequence
+   (assoc {} :genetic-sequence genetic-sequence
           :guid (uuid)
           :parents parent-coll
           :age age
@@ -45,6 +43,12 @@
    (take total-retrieved (bss/sample population :weigh #(:fitness-score %) :replace true)))
   ([population total-retrieved replace?]
    (take total-retrieved (bss/sample population :weigh #(:fitness-score %) :replace replace?))))
+
+(defn advance-generation
+  [population fitness-function binary-operator-set unary-operator-set]
+  (repeatedly (/ (count population) 2)
+             #(apply (rand-nth binary-operator-set)
+                     [(weighted-selection-of-population population 2)])))
 
 (defn -main
   "I don't do a whole lot ... yet."

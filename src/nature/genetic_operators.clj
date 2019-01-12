@@ -1,4 +1,5 @@
 (ns nature.genetic-operators
+  "Functions to transform individuals and create"
   (:require [nature.core :as nature]
             [nature.population-presets :as pp])
   (:gen-class))
@@ -11,7 +12,6 @@
     allele-2))
 
 (defn fitness-based-scanning-genome
-  "Construct a new genetic sequence, where each allele is picked from a parent base on the ratio of their fitnesses"
   [sequence-1 sequence-2 percent]
   (loop [new-genome []
          gs-1       sequence-1
@@ -23,8 +23,11 @@
              (rest gs-2)))))
 
 (defn fitness-based-scanning
-  [individual-1 individual-2 fitness-function]
-  (let [fitness-total (+ (:fitness-score individual-1) (:fitness-score individual-2))
+  "Construct a new inidiviidual, where each allele is picked from a parent base on the ratio of their fitnesses"
+  [fitness-function selected-individuals]
+  (let [individual-1 (first selected-individuals)
+        individual-2 (second selected-individuals)
+        fitness-total (+ (:fitness-score individual-1) (:fitness-score individual-2))
         percent (* 100 (/ (:fitness-score individual-1) fitness-total))]
     (nature/build-individual
      (fitness-based-scanning-genome (:genetic-sequence individual-1)
@@ -35,8 +38,11 @@
      fitness-function)))
 
 (defn crossover
-  [individual-1 individual-2 fitness-function]
-  (let [crossover-point (rand-int (count individual-1))
+  "Construct two new individuals by splitting the genetic sequences of two parents and crossing them over wiith each other"
+  [fitness-function selected-individuals]
+  (let [individual-1 (first selected-individuals)
+        individual-2 (second selected-individuals)
+        crossover-point (rand-int (count individual-1))
         split-1 (split-at crossover-point (:genetic-sequence individual-1))
         split-2 (split-at crossover-point (:genetic-sequence individual-2))
         parents (vector (:guid individual-1) (:guid individual-2))]
@@ -50,6 +56,7 @@
                                    fitness-function))))
 
 (defn mutation-operator
+  "Construct a new individual, by flipping alleles in the genetiic sequence to a random legal allelee"
   [individual allele-set percent fitness-function]
   (nature/build-individual (map #(fitness-based-scanning-allele % (rand-nth allele-set) percent) (:genetic-sequence individual))
                            (vector (:guid individual))
