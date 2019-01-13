@@ -7,6 +7,20 @@
             [nature.population-operators :as po]
             [nature.population-presets :as pp]))
 
+(deftest evolve-test
+  (testing "Check that evolution is successfull"
+    (let [fitness-function (partial apply +)
+          result (core/evolve pp/binary-genome
+                              100
+                              100
+                              10
+                              fitness-function
+                              [(partial go/fitness-based-scanning fitness-function)
+                               (partial go/crossover fitness-function)]
+                              [(partial go/mutation-operator fitness-function pp/binary-genome 1)])]
+      (is (csa/valid? ::s/population result))
+      (is (= 1 (count result))))))
+
 (deftest advance-generation-test
   (testing "Check that a new generation can be created from a prior generation"
     (let [fitness-function (partial apply +)

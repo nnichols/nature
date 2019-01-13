@@ -65,4 +65,6 @@
   "Construct a new individual, by flipping alleles in the genetiic sequence to a random legal allelee"
   [fitness-function allele-set percent individual]
   (nature/build-individual (map #(fitness-based-scanning-allele % (rand-nth allele-set) percent) (:genetic-sequence individual))
+                           (:parents individual)
+                           (:age individual)
                            fitness-function))
