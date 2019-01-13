@@ -2,6 +2,8 @@
 
 A simple genetic algorithms library for Clojure.
 
+[![Clojars Project](https://img.shields.io/clojars/v/nature.svg)](https://clojars.org/nature)
+
 ## Usage
 
 A deployed copy of the most recent version of [nature exists on clojars.](https://clojars.org/nature)
