@@ -2,16 +2,18 @@
 
 A simple genetic algorithms library for Clojure.
 
-## API
+## Documentation Site
 
-View Codox Documentation here: https://nnichols.github.io/nature/api/index.html
+For more information on nature, please visit the full-length documentation [here.](https://nnichols.github.io/code/nature/intro)
 
-## Code Health
+## Automated Build And Repository Information
 
-View Cloverage Reports here: https://nnichols.github.io/nature/coverage/index.html
+API documentation via [Codox.](https://nnichols.github.io/nature/api/index.html)
+
+Code Coverage reports via [Cloverage.](https://nnichols.github.io/nature/coverage/index.html)
 
 ## License
 
 Copyright © 2018 Nick Nichols
 
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+Distributed under the Eclipse Public License version 1.0

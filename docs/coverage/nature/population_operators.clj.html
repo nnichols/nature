@@ -1,0 +1,104 @@
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="../coverage.css"/>  <title> nature/population_operators.clj </title>
+ </head>
+ <body>
+<span class="covered" title="1 out of 1 forms covered">
+                001&nbsp;&nbsp;(ns&nbsp;nature.population-operators
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                002&nbsp;&nbsp;&nbsp;&nbsp;&quot;Functions&nbsp;that&nbsp;span&nbsp;or&nbsp;operate&nbsp;against&nbsp;entire&nbsp;populations&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                003&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[nature.population-presets&nbsp;:as&nbsp;pp]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                004&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[bigml.sampling.simple&nbsp;:as&nbsp;bss])
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                005&nbsp;&nbsp;&nbsp;&nbsp;(:gen-class))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                006&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                007&nbsp;&nbsp;(defn&nbsp;keep-elite
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                008&nbsp;&nbsp;&nbsp;&nbsp;&quot;Find&nbsp;the&nbsp;top&nbsp;`number-to-keep`&nbsp;individuals&nbsp;in&nbsp;`population`,&nbsp;and&nbsp;increment&nbsp;their&nbsp;ages&nbsp;by&nbsp;1&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                009&nbsp;&nbsp;&nbsp;&nbsp;[population&nbsp;number-to-keep]
+                </span><br/>
+<span class="covered" title="20 out of 20 forms covered">
+                010&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;#(update&nbsp;%&nbsp;:age&nbsp;inc)&nbsp;(take&nbsp;number-to-keep&nbsp;(sort-by&nbsp;:fitness-score&nbsp;#(&gt;&nbsp;%1&nbsp;%2)&nbsp;population))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                011&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                012&nbsp;&nbsp;(defn&nbsp;weighted-selection-of-population
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                013&nbsp;&nbsp;&nbsp;&nbsp;&quot;Pick&nbsp;`total-retreived`&nbsp;individuals&nbsp;from&nbsp;`population`&nbsp;with&nbsp;a&nbsp;relative&nbsp;probability&nbsp;of
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                014&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;individual&#x27;s&nbsp;fitness&nbsp;score&nbsp;divided&nbsp;by&nbsp;the&nbsp;population&#x27;s&nbsp;aggregate&nbsp;fitness&nbsp;score&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                015&nbsp;&nbsp;&nbsp;&nbsp;([population&nbsp;total-retrieved]
+                </span><br/>
+<span class="covered" title="13 out of 13 forms covered">
+                016&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(take&nbsp;total-retrieved&nbsp;(bss&#x2F;sample&nbsp;population&nbsp;:weigh&nbsp;#(:fitness-score&nbsp;%)&nbsp;:replace&nbsp;true)))
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                017&nbsp;&nbsp;&nbsp;&nbsp;([population&nbsp;total-retrieved&nbsp;replace?]
+                </span><br/>
+<span class="covered" title="13 out of 13 forms covered">
+                018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(take&nbsp;total-retrieved&nbsp;(bss&#x2F;sample&nbsp;population&nbsp;:weigh&nbsp;#(:fitness-score&nbsp;%)&nbsp;:replace&nbsp;replace?))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                019&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                020&nbsp;&nbsp;(defn&nbsp;advance-generation
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                021&nbsp;&nbsp;&nbsp;&nbsp;&quot;Apply&nbsp;the&nbsp;functions&nbsp;in&nbsp;`binary-operator-set`&nbsp;until&nbsp;a&nbsp;sufficiently&nbsp;large&nbsp;population&nbsp;is&nbsp;built.
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then&nbsp;apply&nbsp;functions&nbsp;in&nbsp;`unary-operator-set`&nbsp;to&nbsp;the&nbsp;result.
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Optionally,&nbsp;include&nbsp;a&nbsp;map&nbsp;of&nbsp;`settings`&nbsp;to&nbsp;guide&nbsp;overall&nbsp;behavior.
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                024&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;the&nbsp;`:carry-over`&nbsp;setting&nbsp;is&nbsp;added,&nbsp;the&nbsp;elite&nbsp;member&nbsp;`n`&nbsp;of&nbsp;the&nbsp;prior&nbsp;generation&nbsp;will&nbsp;be&nbsp;advanced&nbsp;to&nbsp;the&nbsp;next&nbsp;generation.&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                025&nbsp;&nbsp;&nbsp;&nbsp;([population&nbsp;binary-operator-set&nbsp;unary-operator-set]
+                </span><br/>
+<span class="covered" title="17 out of 17 forms covered">
+                026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[binary-pop&nbsp;(repeatedly&nbsp;(count&nbsp;population)&nbsp;#(apply&nbsp;(rand-nth&nbsp;binary-operator-set)&nbsp;[(weighted-selection-of-population&nbsp;population&nbsp;2)]))]
+                </span><br/>
+<span class="covered" title="9 out of 9 forms covered">
+                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;#((rand-nth&nbsp;unary-operator-set)&nbsp;%)&nbsp;binary-pop)))
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                028&nbsp;&nbsp;&nbsp;&nbsp;([population&nbsp;binary-operator-set&nbsp;unary-operator-set&nbsp;settings]
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                029&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;Currently,&nbsp;:carry-over&nbsp;is&nbsp;the&nbsp;only&nbsp;optional&nbsp;behavior
+                </span><br/>
+<span class="covered" title="7 out of 7 forms covered">
+                030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;&nbsp;(:carry-over&nbsp;settings)&nbsp;0)
+                </span><br/>
+<span class="covered" title="13 out of 13 forms covered">
+                031&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(concat&nbsp;(advance-generation&nbsp;population&nbsp;binary-operator-set&nbsp;unary-operator-set)&nbsp;(keep-elite&nbsp;population&nbsp;(:carry-over&nbsp;settings)))
+                </span><br/>
+<span class="not-covered" title="0 out of 5 forms covered">
+                032&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(advance-generation&nbsp;population&nbsp;binary-operator-set&nbsp;unary-operator-set))))
+                </span><br/>
+ </body>
+</html>

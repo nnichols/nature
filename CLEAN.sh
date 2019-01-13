@@ -5,11 +5,11 @@ lein cljfmt fix
 
 echo " "
 echo "Bikeshed Style Analysis"
-lein bikeshed -v
+lein bikeshed -v 2>&1 | tee .bikeshed
 
 echo " "
 echo "Eastwood Linting"
-lein eastwood
+lein eastwood 2>&1 | tee .eastwood
 
 echo " "
 echo "Unit Tests & Coverage Reporting"
@@ -18,3 +18,7 @@ lein cloverage -o docs/coverage
 echo " "
 echo "API Reporting"
 lein codox
+
+echo " "
+echo "Dead Code Reporting"
+lein yagni 2>&1 | tee .yagni
