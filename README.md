@@ -31,6 +31,6 @@ Code Coverage reports via [Cloverage.](https://nnichols.github.io/nature/coverag
 
 ## License
 
-Copyright © 2018 Nick Nichols
+Copyright © 2018-2019 Nick Nichols
 
 Distributed under the Eclipse Public License version 1.0
