@@ -22,7 +22,7 @@
              (rest gs-1)
              (rest gs-2)))))
 
-(defn fitness-based-scanning
+(defn fitness-based-scanning*
   "Construct a new inidiviidual, where each allele is picked from a parent base on the ratio of their fitnesses"
   [fitness-function selected-individuals]
   (let [individual-1 (first selected-individuals)
@@ -36,6 +36,10 @@
      (vector (:guid individual-1) (:guid individual-2))
      pp/default-age
      fitness-function)))
+
+(defn fitness-based-scanning
+  [fitness-function]
+  (partial fitness-based-scanning* fitness-function))
 
 (defn crossover*
   "Construct two new individuals by splitting the genetic sequences of two parents and crossing them over wiith each other"
@@ -57,7 +61,7 @@
 
 (defn crossover
   [fitness-function]
-  (partial crossover* fitness-function)
+  (partial crossover* fitness-function))
 
 (defn no-op
   "A proxy for `identity` to signal when a particular operation category is not needed,

@@ -6,16 +6,16 @@
             [nature.genetic-operators :as go]
             [nature.population-presets :as pp]))
 
-(deftest binary-operators-test
+(deftest binary-operators-*-test
   (let [fitness-function (partial apply +)
         sample-population (core/build-population 2
                                                  pp/binary-genome
                                                  (inc (rand-int 100))
                                                  fitness-function)]
     (testing "Ensure crossover creates two valid individuals"
-      (is (csa/valid? ::s/population (go/crossover fitness-function sample-population))))
+      (is (csa/valid? ::s/population (go/crossover* fitness-function sample-population))))
     (testing "Ensure fitness-based scanning creates two valid individuals"
-      (is (csa/valid? ::s/population (go/fitness-based-scanning fitness-function sample-population))))))
+      (is (csa/valid? ::s/population (go/fitness-based-scanning* fitness-function sample-population))))))
 
 (deftest fitness-based-scanning-allele-test
   (testing "Test extrema of percents passed to allele selection"

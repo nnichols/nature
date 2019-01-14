@@ -15,8 +15,8 @@
                               100
                               10
                               fitness-function
-                              [(partial go/fitness-based-scanning fitness-function)
-                               (partial go/crossover fitness-function)]
+                              [(go/fitness-based-scanning fitness-function)
+                               (go/crossover fitness-function)]
                               [(partial go/mutation-operator fitness-function pp/binary-genome 1)])]
       (is (csa/valid? ::s/population result))
       (is (= 1 (count result))))))
@@ -29,8 +29,8 @@
                                                    20
                                                    fitness-function)
           new-generation (po/advance-generation sample-population
-                                                [(partial go/fitness-based-scanning fitness-function)
-                                                 (partial go/crossover fitness-function)]
+                                                [(go/fitness-based-scanning fitness-function)
+                                                 (go/crossover fitness-function)]
                                                 [(partial go/mutation-operator fitness-function pp/binary-genome 1)])]
       (is (csa/valid? ::s/population new-generation))
       (is (= 20 (count new-generation))))))
