@@ -37,7 +37,7 @@
      pp/default-age
      fitness-function)))
 
-(defn crossover
+(defn crossover*
   "Construct two new individuals by splitting the genetic sequences of two parents and crossing them over wiith each other"
   [fitness-function selected-individuals]
   (let [individual-1 (first selected-individuals)
@@ -54,6 +54,10 @@
                                    parents
                                    pp/default-age
                                    fitness-function))))
+
+(defn crossover
+  [fitness-function]
+  (partial crossover* fitness-function)
 
 (defn no-op
   "A proxy for `identity` to signal when a particular operation category is not needed,

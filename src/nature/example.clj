@@ -10,5 +10,5 @@
                  pp/default-population-length
                  pp/default-generation-count
                  pp/sum-alleles
-                 [(partial go/crossover pp/sum-alleles)]
+                 [(go/crossover pp/sum-alleles)]
                  [(partial go/mutation-operator pp/sum-alleles pp/binary-genome 1)]))
