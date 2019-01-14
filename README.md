@@ -2,7 +2,7 @@
 
 A simple genetic algorithms library for Clojure.
 
-## Usage
+## Installation
 
 A deployed copy of the most recent version of [nature exists on clojars.](https://clojars.org/nature)
 To use it, add the following as a dependency in your project.clj file:
@@ -12,12 +12,11 @@ To use it, add the following as a dependency in your project.clj file:
 ```
 
 The next time you build your application, [Leiningen](https://leiningen.org/) should pull it automatically.
-
 Alternatively, you may clone or fork the repository to work with it directly.
 
-## Instructions
+## Usage
 
-<< MORE COMING SOON >>
+The core of nature's functionality lies within the `evolve` function, and we'll walkthrough a very simple example here.
 
 ## Documentation Site
 
