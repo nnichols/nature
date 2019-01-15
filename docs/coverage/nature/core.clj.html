@@ -73,65 +73,68 @@
 <span class="covered" title="14 out of 14 forms covered">
                 023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(evolve&nbsp;allele-set&nbsp;genome-length&nbsp;population-size&nbsp;generations&nbsp;fitness-function&nbsp;binary-operators&nbsp;unary-operators&nbsp;{:solutions&nbsp;1,&nbsp;:carry-over&nbsp;1}))
                 </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                024&nbsp;&nbsp;
+                </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                024&nbsp;&nbsp;&nbsp;&nbsp;([allele-set&nbsp;genome-length&nbsp;population-size&nbsp;generations&nbsp;fitness-function&nbsp;binary-operators&nbsp;unary-operators&nbsp;options]
+                025&nbsp;&nbsp;&nbsp;&nbsp;([allele-set&nbsp;genome-length&nbsp;population-size&nbsp;generations&nbsp;fitness-function&nbsp;binary-operators&nbsp;unary-operators&nbsp;options]&nbsp;;;&nbsp;TODO&nbsp;-&nbsp;Curry&nbsp;the&nbsp;genetic&nbsp;operators&nbsp;one&nbsp;more&nbsp;level,&nbsp;so&nbsp;the&nbsp;fitness-function&nbsp;can&nbsp;be&nbsp;pressed&nbsp;in
                 </span><br/>
 <span class="covered" title="7 out of 7 forms covered">
-                025&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[solutions&nbsp;(max&nbsp;1&nbsp;(:solutions&nbsp;options))
+                026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[solutions&nbsp;(max&nbsp;1&nbsp;(:solutions&nbsp;options))
                 </span><br/>
 <span class="covered" title="6 out of 6 forms covered">
-                026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carry-over&nbsp;(max&nbsp;1&nbsp;(:carry-over&nbsp;options))]
+                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carry-over&nbsp;(max&nbsp;1&nbsp;(:carry-over&nbsp;options))]
                 </span><br/>
 <span class="covered" title="8 out of 8 forms covered">
-                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(loop&nbsp;[population&nbsp;(io&#x2F;build-population&nbsp;population-size&nbsp;allele-set&nbsp;genome-length&nbsp;fitness-function)
+                028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(loop&nbsp;[population&nbsp;(io&#x2F;build-population&nbsp;population-size&nbsp;allele-set&nbsp;genome-length&nbsp;fitness-function)
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current-generation&nbsp;0]
+                029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current-generation&nbsp;0]
                 </span><br/>
 <span class="covered" title="5 out of 5 forms covered">
-                029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;current-generation&nbsp;generations)
+                030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(&gt;=&nbsp;current-generation&nbsp;generations)
                 </span><br/>
 <span class="covered" title="12 out of 12 forms covered">
-                030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(take&nbsp;solutions&nbsp;(sort-by&nbsp;:fitness-score&nbsp;#(&gt;&nbsp;%1&nbsp;%2)&nbsp;population))
+                031&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(take&nbsp;solutions&nbsp;(sort-by&nbsp;:fitness-score&nbsp;#(&gt;&nbsp;%1&nbsp;%2)&nbsp;population))
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                031&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recur&nbsp;(po&#x2F;advance-generation&nbsp;population&nbsp;binary-operators&nbsp;unary-operators&nbsp;{:carry-over&nbsp;carry-over})&nbsp;(inc&nbsp;current-generation)))))))
+                032&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recur&nbsp;(po&#x2F;advance-generation&nbsp;population&nbsp;population-size&nbsp;binary-operators&nbsp;unary-operators&nbsp;{:carry-over&nbsp;carry-over})&nbsp;(inc&nbsp;current-generation)))))))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                032&nbsp;&nbsp;
+                033&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                033&nbsp;&nbsp;(defn&nbsp;-main
+                034&nbsp;&nbsp;(defn&nbsp;-main
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                034&nbsp;&nbsp;&nbsp;&nbsp;&quot;I&nbsp;don&#x27;t&nbsp;do&nbsp;a&nbsp;whole&nbsp;lot&nbsp;...&nbsp;yet.&quot;
+                035&nbsp;&nbsp;&nbsp;&nbsp;&quot;A&nbsp;very,&nbsp;very&nbsp;simple&nbsp;example&quot;
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                035&nbsp;&nbsp;&nbsp;&nbsp;[&amp;&nbsp;args]
+                036&nbsp;&nbsp;&nbsp;&nbsp;[&amp;&nbsp;args]
                 </span><br/>
 <span class="not-covered" title="0 out of 5 forms covered">
-                036&nbsp;&nbsp;&nbsp;&nbsp;(println&nbsp;(evolve&nbsp;pp&#x2F;binary-genome
+                037&nbsp;&nbsp;&nbsp;&nbsp;(println&nbsp;(evolve&nbsp;pp&#x2F;binary-genome
                 </span><br/>
 <span class="not-covered" title="0 out of 1 forms covered">
-                037&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-sequence-length
+                038&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-sequence-length
                 </span><br/>
 <span class="not-covered" title="0 out of 1 forms covered">
-                038&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-population-size
+                039&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-population-size
                 </span><br/>
 <span class="not-covered" title="0 out of 1 forms covered">
-                039&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-generation-count
+                040&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-generation-count
                 </span><br/>
 <span class="not-covered" title="0 out of 1 forms covered">
-                040&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;sum-alleles
+                041&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;sum-alleles
                 </span><br/>
 <span class="not-covered" title="0 out of 4 forms covered">
-                041&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[(go&#x2F;crossover&nbsp;pp&#x2F;sum-alleles)]
+                042&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[(go&#x2F;crossover&nbsp;pp&#x2F;sum-alleles)]
                 </span><br/>
 <span class="not-covered" title="0 out of 7 forms covered">
-                042&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[(partial&nbsp;go&#x2F;mutation-operator&nbsp;pp&#x2F;sum-alleles&nbsp;pp&#x2F;binary-genome&nbsp;1)]
+                043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[(partial&nbsp;go&#x2F;mutation-operator&nbsp;pp&#x2F;sum-alleles&nbsp;pp&#x2F;binary-genome&nbsp;1)]
                 </span><br/>
 <span class="not-covered" title="0 out of 5 forms covered">
-                043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{:solutions&nbsp;10,&nbsp;:carry-over&nbsp;5})))
+                044&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{:solutions&nbsp;1,&nbsp;:carry-over&nbsp;5})))
                 </span><br/>
  </body>
 </html>

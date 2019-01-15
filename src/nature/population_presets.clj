@@ -21,10 +21,10 @@
   (partial apply +))
 
 (def default-sequence-length
-  100)
+  25)
 
 (def default-population-size
-  250)
+  50)
 
 (def default-generation-count
-  250)
+  50)

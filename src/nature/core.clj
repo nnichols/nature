@@ -21,17 +21,18 @@
       `:solutions` an integer representing the top n individuals to return after evolution completes. Default is 1"
   ([allele-set genome-length population-size generations fitness-function binary-operators unary-operators]
    (evolve allele-set genome-length population-size generations fitness-function binary-operators unary-operators {:solutions 1, :carry-over 1}))
-  ([allele-set genome-length population-size generations fitness-function binary-operators unary-operators options]
+
+  ([allele-set genome-length population-size generations fitness-function binary-operators unary-operators options] ;; TODO - Curry the genetic operators one more level, so the fitness-function can be pressed in
    (let [solutions (max 1 (:solutions options))
          carry-over (max 1 (:carry-over options))]
      (loop [population (io/build-population population-size allele-set genome-length fitness-function)
             current-generation 0]
        (if (>= current-generation generations)
          (take solutions (sort-by :fitness-score #(> %1 %2) population))
-         (recur (po/advance-generation population binary-operators unary-operators {:carry-over carry-over}) (inc current-generation)))))))
+         (recur (po/advance-generation population population-size binary-operators unary-operators {:carry-over carry-over}) (inc current-generation)))))))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "A very, very simple example"
   [& args]
   (println (evolve pp/binary-genome
                    pp/default-sequence-length
@@ -40,4 +41,4 @@
                    pp/sum-alleles
                    [(go/crossover pp/sum-alleles)]
                    [(partial go/mutation-operator pp/sum-alleles pp/binary-genome 1)]
-                   {:solutions 10, :carry-over 5})))
+                   {:solutions 1, :carry-over 5})))

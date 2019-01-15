@@ -15,6 +15,7 @@
                                                  20
                                                  fitness-function)
           new-generation (po/advance-generation sample-population
+                                                20
                                                 [(go/fitness-based-scanning fitness-function)
                                                  (go/crossover fitness-function)]
                                                 [(partial go/mutation-operator fitness-function pp/binary-genome 1)])]
