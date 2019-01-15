@@ -27,4 +27,4 @@
   250)
 
 (def default-generation-count
-  500)
+  250)

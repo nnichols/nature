@@ -1,0 +1,113 @@
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="../coverage.css"/>  <title> nature/initialization_operators.clj </title>
+ </head>
+ <body>
+<span class="covered" title="1 out of 1 forms covered">
+                001&nbsp;&nbsp;(ns&nbsp;nature.initialization-operators
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                002&nbsp;&nbsp;&nbsp;&nbsp;&quot;Functions&nbsp;to&nbsp;create&nbsp;individuals&nbsp;and&nbsp;populations&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                003&nbsp;&nbsp;&nbsp;&nbsp;(:require&nbsp;[nature.population-presets&nbsp;:as&nbsp;pp]))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                004&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                005&nbsp;&nbsp;(defn&nbsp;uuid
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                006&nbsp;&nbsp;&nbsp;&nbsp;&quot;More&nbsp;idiomatic&nbsp;wrapper&nbsp;around&nbsp;Java&#x27;s&nbsp;v1&nbsp;UUID&nbsp;functionality&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                007&nbsp;&nbsp;&nbsp;&nbsp;[]
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                008&nbsp;&nbsp;&nbsp;&nbsp;(str&nbsp;(java.util.UUID&#x2F;randomUUID)))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                009&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                010&nbsp;&nbsp;(defn&nbsp;generate-sequence
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                011&nbsp;&nbsp;&nbsp;&nbsp;&quot;Creates&nbsp;a&nbsp;genetic&nbsp;sequence&nbsp;of&nbsp;`sequence-length`&nbsp;elements,
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                012&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;each&nbsp;item&nbsp;is&nbsp;in&nbsp;the&nbsp;collection&nbsp;of&nbsp;`alleles`&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                013&nbsp;&nbsp;&nbsp;&nbsp;[alleles&nbsp;sequence-length]
+                </span><br/>
+<span class="covered" title="7 out of 7 forms covered">
+                014&nbsp;&nbsp;&nbsp;&nbsp;(repeatedly&nbsp;sequence-length&nbsp;#(rand-nth&nbsp;alleles)))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                015&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                016&nbsp;&nbsp;(defn&nbsp;build-individual
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                017&nbsp;&nbsp;&nbsp;&nbsp;&quot;Generate&nbsp;a&nbsp;new&nbsp;individual,&nbsp;and&nbsp;evaluate&nbsp;the&nbsp;fitness&nbsp;of&nbsp;the&nbsp;genetic&nbsp;sequence.&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                018&nbsp;&nbsp;&nbsp;&nbsp;([genetic-sequence&nbsp;fitness-function]
+                </span><br/>
+<span class="covered" title="9 out of 9 forms covered">
+                019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(assoc&nbsp;{}&nbsp;:genetic-sequence&nbsp;genetic-sequence
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:guid&nbsp;(uuid)
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:parents&nbsp;pp&#x2F;initializer-name
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:age&nbsp;pp&#x2F;default-age
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:fitness-score&nbsp;(fitness-function&nbsp;genetic-sequence)))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                024&nbsp;&nbsp;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                025&nbsp;&nbsp;&nbsp;&nbsp;([genetic-sequence&nbsp;parent-coll&nbsp;age&nbsp;fitness-function]
+                </span><br/>
+<span class="covered" title="9 out of 9 forms covered">
+                026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(assoc&nbsp;{}&nbsp;:genetic-sequence&nbsp;genetic-sequence
+                </span><br/>
+<span class="covered" title="2 out of 2 forms covered">
+                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:guid&nbsp;(uuid)
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:parents&nbsp;parent-coll
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                029&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:age&nbsp;age
+                </span><br/>
+<span class="covered" title="3 out of 3 forms covered">
+                030&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:fitness-score&nbsp;(fitness-function&nbsp;genetic-sequence))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                031&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                032&nbsp;&nbsp;(defn&nbsp;build-population
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                033&nbsp;&nbsp;&nbsp;&nbsp;&quot;Build&nbsp;`population-size`&nbsp;individuals&nbsp;by&nbsp;invoking&nbsp;`build-individual`&nbsp;on&nbsp;random,&nbsp;conforming&nbsp;genetic&nbsp;sequences.&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                034&nbsp;&nbsp;&nbsp;&nbsp;[population-size&nbsp;alleles&nbsp;sequence-length&nbsp;fitness-function]
+                </span><br/>
+<span class="covered" title="11 out of 11 forms covered">
+                035&nbsp;&nbsp;&nbsp;&nbsp;(repeatedly&nbsp;population-size&nbsp;#(build-individual&nbsp;(generate-sequence&nbsp;alleles&nbsp;sequence-length)&nbsp;fitness-function)))
+                </span><br/>
+ </body>
+</html>

@@ -1,21 +1,20 @@
 (ns nature.genetic-operators-test
   (:require [clojure.test :refer :all]
             [clojure.spec.alpha :as csa]
-            [nature.core :as core]
             [nature.spec :as s]
             [nature.genetic-operators :as go]
+            [nature.initialization-operators :as io]
             [nature.population-presets :as pp]))
 
 (deftest binary-operators-*-test
-  (let [fitness-function (partial apply +)
-        sample-population (core/build-population 2
-                                                 pp/binary-genome
-                                                 (inc (rand-int 100))
-                                                 fitness-function)]
+  (let [sample-population (io/build-population 2
+                                               pp/binary-genome
+                                               (inc (rand-int 100))
+                                               pp/sum-alleles)]
     (testing "Ensure crossover creates two valid individuals"
-      (is (csa/valid? ::s/population (go/crossover* fitness-function sample-population))))
+      (is (csa/valid? ::s/population (go/crossover* pp/sum-alleles sample-population))))
     (testing "Ensure fitness-based scanning creates two valid individuals"
-      (is (csa/valid? ::s/population (go/fitness-based-scanning* fitness-function sample-population))))))
+      (is (csa/valid? ::s/population (go/fitness-based-scanning* pp/sum-alleles sample-population))))))
 
 (deftest fitness-based-scanning-allele-test
   (testing "Test extrema of percents passed to allele selection"
@@ -33,13 +32,25 @@
 
 (deftest mutation-operator-test
   (testing "Test extrema of percents passed to mutation"
-    (let [fitness-function (partial apply +)
-          individual (core/build-individual [0 0 0 0 0 0 0 0 0 0] fitness-function)
-          no-mutation (go/mutation-operator fitness-function [1] 0  individual)
-          all-mutation (go/mutation-operator fitness-function [1] 100 individual)]
+    (let [individual (io/build-individual [0 0 0 0 0 0 0 0 0 0] pp/sum-alleles)
+          no-mutation (go/mutation-operator pp/sum-alleles [1] 0  individual)
+          all-mutation (go/mutation-operator pp/sum-alleles [1] 100 individual)]
       (is (csa/valid? ::s/individual no-mutation))
       (is (csa/valid? ::s/individual all-mutation))
+      (is (s/not-empty? (:genetic-sequence no-mutation)))
+      (is (s/not-empty? (:genetic-sequence all-mutation)))
       (is (every? #(= 0 %) (:genetic-sequence no-mutation)))
       (is (every? #(= 1 %) (:genetic-sequence all-mutation)))
-      (is (= 0 (:age no-mutation) (:age all-mutation)))
+      (is (= 0 (:age no-mutation) (:age all-mutation) (:age individual)))
       (is (= (:parents no-mutation) (:parents all-mutation))))))
+
+(deftest no-op-test
+  (testing "Ensure no-op returns the same individual with only the age modified"
+    (let [original (io/build-individual pp/binary-genome pp/sum-alleles)
+          modified (first (go/no-op pp/sum-alleles (vector original)))]
+      (is (csa/valid? ::s/individual modified))
+      (is (= (:guid original) (:guid modified)))
+      (is (= (:parents original) (:parents modified)))
+      (is (= (:fitness-score original) (:fitness-score modified)))
+      (is (= (inc (:age original)) (:age modified)))
+      (is (= (:genetic-sequence original) (:genetic-sequence modified))))))

@@ -1,9 +1,25 @@
-(ns nature.spec-test
+(ns nature.initialization-operators-test
   (:require [clojure.test :refer :all]
             [clojure.spec.alpha :as csa]
-            [nature.core :as core]
             [nature.spec :as s]
+            [nature.initialization-operators :as io]
             [nature.population-presets :as pp]))
+
+(deftest uuid-test
+  (testing "Ensure uuids are sensible"
+    (is (string? (io/uuid)))
+    (is (= 36 (count (io/uuid))))))
+
+(deftest integer-genome-test
+  (testing "Sanity checking integer genome generation"
+    (let [test-cap 65535
+          test-bot 1]
+      (is (every? #(< 0 % 11) (pp/integer-genome)))
+      (is (every? #(< 0 % (inc test-cap)) (pp/integer-genome test-cap)))
+      (is (every? #(< 0 % (inc test-cap)) (pp/integer-genome test-cap test-bot)))
+      (is (every? #(< 0 % (inc test-cap)) (pp/integer-genome test-cap test-bot 2)))
+      (is (every? odd? (pp/integer-genome test-cap test-bot 2)))
+      (is (every? even? (pp/integer-genome test-cap (inc test-bot) 2))))))
 
 (deftest not-empty-test
   (testing "Sanity checking not-empty?"
@@ -17,7 +33,7 @@
 
 (deftest build-individual-test
   (testing "Check that each key-value pair of a generated individual conforms to the spec"
-    (let [individual (core/build-individual [0 1 0 1 0 1 0 1 0 1] (partial apply +))]
+    (let [individual (io/build-individual [0 1 0 1 0 1 0 1 0 1] (partial apply +))]
       (is (csa/valid? ::s/genetic-sequence (:genetic-sequence individual)))
       (is (csa/valid? ::s/guid (:guid individual)))
       (is (csa/valid? ::s/parents (:parents individual)))
@@ -34,8 +50,8 @@
 
 (deftest build-population-test
   (testing "Check that each key-value pair of all generated individuals in a population conforms to the spec"
-    (let [population (core/build-population (inc (rand-int 100))
-                                            pp/binary-genome
-                                            (inc (rand-int 100))
-                                            (partial apply +))]
+    (let [population (io/build-population (inc (rand-int 100))
+                                          pp/binary-genome
+                                          (inc (rand-int 100))
+                                          (partial apply +))]
       (is (csa/valid? ::s/population population)))))

@@ -1,40 +1,10 @@
 (ns nature.core
   (:require [nature.spec :as s]
             [nature.population-presets :as pp]
+            [nature.initialization-operators :as io]
+            [nature.genetic-operators :as go]
             [nature.population-operators :as po])
   (:gen-class))
-
-(defn uuid
-  "More idiomatic wrapper around Java's v1 UUID functionality"
-  []
-  (str (java.util.UUID/randomUUID)))
-
-(defn generate-sequence
-  "Creates a genetic sequence of `sequence-length` elements,
-  where each item is in the collection of `alleles`"
-  [alleles sequence-length]
-  (repeatedly sequence-length #(rand-nth alleles)))
-
-(defn build-individual
-  "Generate a new individual, and evaluate the fitness of the genetic sequence."
-  ([genetic-sequence fitness-function]
-   (assoc {} :genetic-sequence genetic-sequence
-          :guid (uuid)
-          :parents pp/initializer-name
-          :age pp/default-age
-          :fitness-score (fitness-function genetic-sequence)))
-
-  ([genetic-sequence parent-coll age fitness-function]
-   (assoc {} :genetic-sequence genetic-sequence
-          :guid (uuid)
-          :parents parent-coll
-          :age age
-          :fitness-score (fitness-function genetic-sequence))))
-
-(defn build-population
-  "Build `population-size` individuals by invoking `build-individual` on random, conforming genetic sequences."
-  [population-size alleles sequence-length fitness-function]
-  (repeatedly population-size #(build-individual (generate-sequence alleles sequence-length) fitness-function)))
 
 (defn evolve
   "Create and evolve a population under the specified conditions until a termination criteria is reached
@@ -54,7 +24,7 @@
   ([allele-set genome-length population-size generations fitness-function binary-operators unary-operators options]
    (let [solutions (max 1 (:solutions options))
          carry-over (max 1 (:carry-over options))]
-     (loop [population (build-population population-size allele-set genome-length fitness-function)
+     (loop [population (io/build-population population-size allele-set genome-length fitness-function)
             current-generation 0]
        (if (>= current-generation generations)
          (take solutions (sort-by :fitness-score #(> %1 %2) population))
@@ -63,4 +33,11 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (println "¯\\_(ツ)_/¯"))
+  (println (evolve pp/binary-genome
+                   pp/default-sequence-length
+                   pp/default-population-size
+                   pp/default-generation-count
+                   pp/sum-alleles
+                   [(go/crossover pp/sum-alleles)]
+                   [(partial go/mutation-operator pp/sum-alleles pp/binary-genome 1)]
+                   {:solutions 10, :carry-over 5})))

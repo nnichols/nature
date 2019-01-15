@@ -1,8 +1,7 @@
 (ns nature.population-operators
   "Functions that span or operate against entire populations"
   (:require [nature.population-presets :as pp]
-            [bigml.sampling.simple :as bss])
-  (:gen-class))
+            [bigml.sampling.simple :as bss]))
 
 (defn keep-elite
   "Find the top `number-to-keep` individuals in `population`, and increment their ages by 1"
@@ -24,7 +23,7 @@
    If the `:carry-over` setting is added, the elite member `n` of the prior generation will be advanced to the next generation."
   ([population binary-operator-set unary-operator-set]
    (let [binary-pop (repeatedly (count population) #(apply (rand-nth binary-operator-set) [(weighted-selection-of-population population 2)]))]
-     (map #((rand-nth unary-operator-set) %) binary-pop)))
+     (map #(apply (rand-nth unary-operator-set) [%]) binary-pop)))
   ([population binary-operator-set unary-operator-set settings]
   ;; Currently, :carry-over is the only optional behavior
    (if (> (:carry-over settings) 0)
