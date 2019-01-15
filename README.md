@@ -13,7 +13,7 @@ A deployed copy of the most recent version of [nature can be found on clojars.](
 To use it, add the following as a dependency in your project.clj file:
 
 ```
-[nature "0.0.1"]
+[nature "0.1.1"]
 ```
 
 The next time you build your application, [Leiningen](https://leiningen.org/) should pull it automatically.
