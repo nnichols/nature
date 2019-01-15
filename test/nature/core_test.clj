@@ -1,22 +1,19 @@
 (ns nature.core-test
   (:require [clojure.test :refer :all]
             [clojure.spec.alpha :as csa]
-            [nature.core :as core]
+            [nature.core :as nature]
             [nature.spec :as s]
+            [nature.genetic-operators :as go]
             [nature.population-presets :as pp]))
 
-(deftest uuid-test
-  (testing "Ensure uuids are sensible"
-    (is (string? (core/uuid)))
-    (is (= 36 (count (core/uuid))))))
-
-(deftest integer-genome-test
-  (testing "Sanity checking integer genome generation"
-    (let [test-cap 65535
-          test-bot 1]
-      (is (every? #(< 0 % 11) (pp/integer-genome)))
-      (is (every? #(< 0 % (inc test-cap)) (pp/integer-genome test-cap)))
-      (is (every? #(< 0 % (inc test-cap)) (pp/integer-genome test-cap test-bot)))
-      (is (every? #(< 0 % (inc test-cap)) (pp/integer-genome test-cap test-bot 2)))
-      (is (every? odd? (pp/integer-genome test-cap test-bot 2)))
-      (is (every? even? (pp/integer-genome test-cap (inc test-bot) 2))))))
+(deftest evolve-test
+  (testing "Check that evolution is successfull"
+    (let [result (nature/evolve pp/binary-genome
+                                pp/default-sequence-length
+                                pp/default-population-size
+                                pp/default-generation-count
+                                pp/sum-alleles
+                                [(go/crossover pp/sum-alleles)]
+                                [(partial go/mutation-operator pp/sum-alleles pp/binary-genome 1)])]
+      (is (csa/valid? ::s/population result))
+      (is (= 1 (count result))))))
