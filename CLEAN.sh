@@ -16,9 +16,5 @@ echo "Unit Tests & Coverage Reporting"
 lein cloverage -o docs/coverage
 
 echo " "
-echo "API Reporting"
-lein codox
-
-echo " "
 echo "Dead Code Reporting"
 lein yagni 2>&1 | tee .yagni

@@ -2,6 +2,7 @@
 <a href="https://icons8.com/icon/20873/organic-food"><img src="resources/icons8-nature.png"></a>
 [![Clojars Project](https://img.shields.io/clojars/v/nature.svg)](https://clojars.org/nature)
 [![Dependencies Status](https://versions.deps.co/nnichols/nature/status.svg)](https://versions.deps.co/nnichols/nature)
+[![cljdoc badge](https://cljdoc.org/badge/nature/nature)](https://cljdoc.org/d/nature/nature/CURRENT)
 
 > Don't you see the danger, John, inherent in what you're doing here?
 > Genetic power is the most awesome force the planet's ever seen, but you wield it like a kid that's found his dad's gun.
@@ -119,7 +120,7 @@ For more information on nature, please visit the full-length documentation [here
 
 ## Automated Build And Repository Information
 
-API documentation via [Codox.](https://nnichols.github.io/nature/api/index.html)
+API documentation hosted on [cljdoc.](https://cljdoc.org/d/nature/nature/CURRENT)
 
 Code Coverage reports via [Cloverage.](https://nnichols.github.io/nature/coverage/index.html)
 
