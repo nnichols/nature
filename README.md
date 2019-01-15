@@ -1,6 +1,11 @@
-# nature
+# nature - A simple genetic algorithms library for Clojure
+<a href="https://icons8.com/icon/20873/organic-food"><img src="resources/icons8-nature.png"></a>
+[![Clojars Project](https://img.shields.io/clojars/v/nature.svg)](https://clojars.org/nature)
+[![Dependencies Status](https://versions.deps.co/nnichols/nature/status.svg)](https://versions.deps.co/nnichols/nature)
 
-A simple genetic algorithms library for Clojure.
+> Don't you see the danger, John, inherent in what you're doing here?
+> Genetic power is the most awesome force the planet's ever seen, but you wield it like a kid that's found his dad's gun.
+> - Dr Ian Malcolm from [*Jurassic Park*](https://www.imdb.com/title/tt0107290/)
 
 ## Installation
 
@@ -28,8 +33,10 @@ API documentation via [Codox.](https://nnichols.github.io/nature/api/index.html)
 
 Code Coverage reports via [Cloverage.](https://nnichols.github.io/nature/coverage/index.html)
 
-## License
+## Licensing
 
-Copyright © 2018-2019 Nick Nichols
+Copyright © 2018-2019 [Nick Nichols](https://nnichols.github.io/)
 
-Distributed under the Eclipse Public License version 1.0
+Distributed under the [Eclipse Public License Version 1.0](https://www.eclipse.org/legal/epl-v10.html)
+
+[Organic Food Icon by Icons8](https://icons8.com/icon/20873/organic-food)
