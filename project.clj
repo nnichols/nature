@@ -1,4 +1,4 @@
-(defproject nature "0.1.1"
+(defproject nature "0.2.0"
   :description "A simple genetic algorithms library for Clojure"
   :url "https://github.com/nnichols/nature"
   :license {:name "Eclipse Public License"
