@@ -5,4 +5,4 @@
 (defn binary-sequence-to-int
   "Convert `binary-seq`, a collection of binary values, to the positive integer it represents"
   [binary-seq]
-    (Integer/parseInt (apply str "" binary-seq) 2))
+  (Integer/parseInt (apply str "" binary-seq) 2))
