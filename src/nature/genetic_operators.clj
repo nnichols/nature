@@ -64,7 +64,7 @@
   (map #(update % :age inc) selected-individuals))
 
 (defn mutation-operator
-  "Construct a new individual, by flipping alleles in the genetiic sequence to a random legal allelee"
+  "Construct a new individual, by flipping alleles in the genetiic sequence to a random legal allele"
   [fitness-function allele-set percent individual]
   (io/build-individual
    (fitness-based-scanning-genome (:genetic-sequence individual)
