@@ -1,10 +1,9 @@
-## vXXX.YYY.ZZZ / CCYY Month DD
+## v0.2.0 / 2019 January 15
 
-> This release *change description here*
+> This release adds binary genome decoding and several bugfixes
 
-* **Add** -
-* **Fix** -
-* **Delete** -
+* **Add** - Binary genome to integer decoder
+* **Fix** - Crossover point determination
 
 ## v0.1.1 / 2019 January 14
 

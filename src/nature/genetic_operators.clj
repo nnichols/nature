@@ -45,7 +45,7 @@
   [fitness-function selected-individuals]
   (let [individual-1 (first selected-individuals)
         individual-2 (second selected-individuals)
-        crossover-point (/ (count individual-1) 2)
+        crossover-point (/ (count (:genetic-sequence individual-1)) 2)
         split-1 (split-at crossover-point (:genetic-sequence individual-1))
         split-2 (split-at crossover-point (:genetic-sequence individual-2))]
     (io/build-individual (concat (first split-1) (last split-2))
@@ -64,7 +64,7 @@
   (map #(update % :age inc) selected-individuals))
 
 (defn mutation-operator
-  "Construct a new individual, by flipping alleles in the genetiic sequence to a random legal allelee"
+  "Construct a new individual, by flipping alleles in the genetiic sequence to a random legal allele"
   [fitness-function allele-set percent individual]
   (io/build-individual
    (fitness-based-scanning-genome (:genetic-sequence individual)
