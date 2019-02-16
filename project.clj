@@ -1,4 +1,4 @@
-(defproject nature "0.2.0"
+(defproject nature "0.2.1"
   :description "A simple genetic algorithms library for Clojure"
   :url "https://github.com/nnichols/nature"
   :license {:name "Eclipse Public License"
@@ -9,4 +9,5 @@
   :eastwood {:add-linters [:unused-fn-args :unused-private-vars]}
   :main ^:skip-aot nature.core
   :target-path "target/%s"
+  :aot :all
   :profiles {:uberjar {:aot :all}})
