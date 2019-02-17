@@ -37,6 +37,7 @@
      fitness-function)))
 
 (defn fitness-based-scanning
+  "A curried form of `fitness-based-scanning*` to more easily pass around"
   [fitness-function]
   (partial fitness-based-scanning* fitness-function))
 
@@ -54,6 +55,7 @@
                          fitness-function)))
 
 (defn crossover
+  "A curried form of `crossover*` to more easily pass around"
   [fitness-function]
   (partial crossover* fitness-function))
 

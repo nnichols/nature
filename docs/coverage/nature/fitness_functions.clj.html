@@ -28,5 +28,62 @@
 <span class="covered" title="7 out of 7 forms covered">
                 008&nbsp;&nbsp;&nbsp;&nbsp;(Integer&#x2F;parseInt&nbsp;(apply&nbsp;str&nbsp;&quot;&quot;&nbsp;binary-seq)&nbsp;2))
                 </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                009&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                010&nbsp;&nbsp;(defn&nbsp;gray-binary-sequence-to-int
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                011&nbsp;&nbsp;&nbsp;&nbsp;&quot;Convert&nbsp;`binary-seq`,&nbsp;a&nbsp;collection&nbsp;of&nbsp;binary&nbsp;values,&nbsp;to&nbsp;the&nbsp;positive&nbsp;integer&nbsp;it&nbsp;represents
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                012&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when&nbsp;considered&nbsp;by&nbsp;its&nbsp;Grey&nbsp;Coding:&nbsp;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Gray_code&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                013&nbsp;&nbsp;&nbsp;&nbsp;[binary-seq]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                014&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[std-binary&nbsp;(binary-sequence-to-int&nbsp;binary-seq)]
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                015&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(loop&nbsp;[mask&nbsp;(bit-shift-right&nbsp;std-binary&nbsp;1)
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                016&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;&nbsp;std-binary]
+                </span><br/>
+<span class="covered" title="5 out of 5 forms covered">
+                017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;(=&nbsp;0&nbsp;mask)
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;val
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recur&nbsp;(bit-shift-right&nbsp;mask&nbsp;1)&nbsp;(bit-xor&nbsp;val&nbsp;mask))))))
+                </span><br/>
+<span class="blank" title="0 out of 0 forms covered">
+                020&nbsp;&nbsp;
+                </span><br/>
+<span class="covered" title="1 out of 1 forms covered">
+                021&nbsp;&nbsp;(defn&nbsp;int-to-decimal-mesh
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                022&nbsp;&nbsp;&nbsp;&nbsp;&quot;Splits&nbsp;the&nbsp;continuous&nbsp;range&nbsp;from&nbsp;`lower-bound`&nbsp;to&nbsp;`upper-bound`&nbsp;into&nbsp;discrete&nbsp;`blocks`,
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                023&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;than&nbsp;returns&nbsp;the&nbsp;decimal&nbsp;value&nbsp;of&nbsp;the&nbsp;`val-to-convert`th&nbsp;block&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                024&nbsp;&nbsp;&nbsp;&nbsp;[val-to-convert&nbsp;lower-bound&nbsp;upper-bound&nbsp;blocks]
+                </span><br/>
+<span class="covered" title="8 out of 8 forms covered">
+                025&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[block-size&nbsp;(&#x2F;&nbsp;(-&nbsp;upper-bound&nbsp;lower-bound)&nbsp;blocks)
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*&nbsp;val-to-convert&nbsp;block-size)]
+                </span><br/>
+<span class="covered" title="4 out of 4 forms covered">
+                027&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(+&nbsp;lower-bound&nbsp;offset)))
+                </span><br/>
  </body>
 </html>

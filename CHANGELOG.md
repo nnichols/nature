@@ -1,3 +1,15 @@
+## v0.2.2 / 2019 February 17
+
+> This release adds common fitness-function helpers
+
+* **Add** - Gray Code Binary genome to integer decoder, snt to decimal meshes
+
+## v0.2.1 / 2019 February 16
+
+> This release...
+
+* **Fix** - Include :aot directive in project.clj
+
 ## v0.2.0 / 2019 January 15
 
 > This release adds binary genome decoding and several bugfixes

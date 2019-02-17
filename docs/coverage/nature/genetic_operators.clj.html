@@ -122,112 +122,118 @@
                 039&nbsp;&nbsp;(defn&nbsp;fitness-based-scanning
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                040&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function]
+                040&nbsp;&nbsp;&nbsp;&nbsp;&quot;A&nbsp;curried&nbsp;form&nbsp;of&nbsp;`fitness-based-scanning*`&nbsp;to&nbsp;more&nbsp;easily&nbsp;pass&nbsp;around&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                041&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function]
                 </span><br/>
 <span class="covered" title="4 out of 4 forms covered">
-                041&nbsp;&nbsp;&nbsp;&nbsp;(partial&nbsp;fitness-based-scanning*&nbsp;fitness-function))
+                042&nbsp;&nbsp;&nbsp;&nbsp;(partial&nbsp;fitness-based-scanning*&nbsp;fitness-function))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                042&nbsp;&nbsp;
+                043&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                043&nbsp;&nbsp;(defn&nbsp;crossover*
+                044&nbsp;&nbsp;(defn&nbsp;crossover*
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                044&nbsp;&nbsp;&nbsp;&nbsp;&quot;Construct&nbsp;two&nbsp;new&nbsp;individuals&nbsp;by&nbsp;splitting&nbsp;the&nbsp;genetic&nbsp;sequences&nbsp;of&nbsp;two&nbsp;parents&nbsp;and&nbsp;crossing&nbsp;them&nbsp;over&nbsp;wiith&nbsp;each&nbsp;other&quot;
+                045&nbsp;&nbsp;&nbsp;&nbsp;&quot;Construct&nbsp;two&nbsp;new&nbsp;individuals&nbsp;by&nbsp;splitting&nbsp;the&nbsp;genetic&nbsp;sequences&nbsp;of&nbsp;two&nbsp;parents&nbsp;and&nbsp;crossing&nbsp;them&nbsp;over&nbsp;wiith&nbsp;each&nbsp;other&quot;
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                045&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function&nbsp;selected-individuals]
+                046&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function&nbsp;selected-individuals]
                 </span><br/>
 <span class="covered" title="4 out of 4 forms covered">
-                046&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[individual-1&nbsp;(first&nbsp;selected-individuals)
+                047&nbsp;&nbsp;&nbsp;&nbsp;(let&nbsp;[individual-1&nbsp;(first&nbsp;selected-individuals)
                 </span><br/>
 <span class="covered" title="3 out of 3 forms covered">
-                047&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;individual-2&nbsp;(second&nbsp;selected-individuals)
+                048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;individual-2&nbsp;(second&nbsp;selected-individuals)
                 </span><br/>
 <span class="covered" title="8 out of 8 forms covered">
-                048&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crossover-point&nbsp;(&#x2F;&nbsp;(count&nbsp;(:genetic-sequence&nbsp;individual-1))&nbsp;2)
+                049&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crossover-point&nbsp;(&#x2F;&nbsp;(count&nbsp;(:genetic-sequence&nbsp;individual-1))&nbsp;2)
                 </span><br/>
 <span class="covered" title="6 out of 6 forms covered">
-                049&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;split-1&nbsp;(split-at&nbsp;crossover-point&nbsp;(:genetic-sequence&nbsp;individual-1))
+                050&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;split-1&nbsp;(split-at&nbsp;crossover-point&nbsp;(:genetic-sequence&nbsp;individual-1))
                 </span><br/>
 <span class="covered" title="6 out of 6 forms covered">
-                050&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;split-2&nbsp;(split-at&nbsp;crossover-point&nbsp;(:genetic-sequence&nbsp;individual-2))]
+                051&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;split-2&nbsp;(split-at&nbsp;crossover-point&nbsp;(:genetic-sequence&nbsp;individual-2))]
                 </span><br/>
 <span class="covered" title="10 out of 10 forms covered">
-                051&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(io&#x2F;build-individual&nbsp;(concat&nbsp;(first&nbsp;split-1)&nbsp;(last&nbsp;split-2))
+                052&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(io&#x2F;build-individual&nbsp;(concat&nbsp;(first&nbsp;split-1)&nbsp;(last&nbsp;split-2))
                 </span><br/>
 <span class="covered" title="8 out of 8 forms covered">
-                052&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(vector&nbsp;(:guid&nbsp;individual-1)&nbsp;(:guid&nbsp;individual-2))
+                053&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(vector&nbsp;(:guid&nbsp;individual-1)&nbsp;(:guid&nbsp;individual-2))
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                053&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-age
+                054&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pp&#x2F;default-age
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                054&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fitness-function)))
+                055&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fitness-function)))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                055&nbsp;&nbsp;
+                056&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                056&nbsp;&nbsp;(defn&nbsp;crossover
+                057&nbsp;&nbsp;(defn&nbsp;crossover
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                057&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function]
+                058&nbsp;&nbsp;&nbsp;&nbsp;&quot;A&nbsp;curried&nbsp;form&nbsp;of&nbsp;`crossover*`&nbsp;to&nbsp;more&nbsp;easily&nbsp;pass&nbsp;around&quot;
+                </span><br/>
+<span class="not-tracked" title="0 out of 0 forms covered">
+                059&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function]
                 </span><br/>
 <span class="covered" title="4 out of 4 forms covered">
-                058&nbsp;&nbsp;&nbsp;&nbsp;(partial&nbsp;crossover*&nbsp;fitness-function))
+                060&nbsp;&nbsp;&nbsp;&nbsp;(partial&nbsp;crossover*&nbsp;fitness-function))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                059&nbsp;&nbsp;
+                061&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                060&nbsp;&nbsp;(defn&nbsp;no-op
+                062&nbsp;&nbsp;(defn&nbsp;no-op
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                061&nbsp;&nbsp;&nbsp;&nbsp;&quot;A&nbsp;proxy&nbsp;for&nbsp;`identity`&nbsp;to&nbsp;signal&nbsp;when&nbsp;a&nbsp;particular&nbsp;operation&nbsp;category&nbsp;is&nbsp;not&nbsp;needed,
+                063&nbsp;&nbsp;&nbsp;&nbsp;&quot;A&nbsp;proxy&nbsp;for&nbsp;`identity`&nbsp;to&nbsp;signal&nbsp;when&nbsp;a&nbsp;particular&nbsp;operation&nbsp;category&nbsp;is&nbsp;not&nbsp;needed,
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                062&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;the&nbsp;`selected-individuals`&nbsp;are&nbsp;kept&nbsp;in&nbsp;the&nbsp;pool&quot;
+                064&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;the&nbsp;`selected-individuals`&nbsp;are&nbsp;kept&nbsp;in&nbsp;the&nbsp;pool&quot;
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                063&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function&nbsp;selected-individuals]
+                065&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function&nbsp;selected-individuals]
                 </span><br/>
 <span class="covered" title="9 out of 9 forms covered">
-                064&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;#(update&nbsp;%&nbsp;:age&nbsp;inc)&nbsp;selected-individuals))
+                066&nbsp;&nbsp;&nbsp;&nbsp;(map&nbsp;#(update&nbsp;%&nbsp;:age&nbsp;inc)&nbsp;selected-individuals))
                 </span><br/>
 <span class="blank" title="0 out of 0 forms covered">
-                065&nbsp;&nbsp;
+                067&nbsp;&nbsp;
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                066&nbsp;&nbsp;(defn&nbsp;mutation-operator
+                068&nbsp;&nbsp;(defn&nbsp;mutation-operator
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                067&nbsp;&nbsp;&nbsp;&nbsp;&quot;Construct&nbsp;a&nbsp;new&nbsp;individual,&nbsp;by&nbsp;flipping&nbsp;alleles&nbsp;in&nbsp;the&nbsp;genetiic&nbsp;sequence&nbsp;to&nbsp;a&nbsp;random&nbsp;legal&nbsp;allele&quot;
+                069&nbsp;&nbsp;&nbsp;&nbsp;&quot;Construct&nbsp;a&nbsp;new&nbsp;individual,&nbsp;by&nbsp;flipping&nbsp;alleles&nbsp;in&nbsp;the&nbsp;genetiic&nbsp;sequence&nbsp;to&nbsp;a&nbsp;random&nbsp;legal&nbsp;allele&quot;
                 </span><br/>
 <span class="not-tracked" title="0 out of 0 forms covered">
-                068&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function&nbsp;allele-set&nbsp;percent&nbsp;individual]
+                070&nbsp;&nbsp;&nbsp;&nbsp;[fitness-function&nbsp;allele-set&nbsp;percent&nbsp;individual]
                 </span><br/>
 <span class="covered" title="2 out of 2 forms covered">
-                069&nbsp;&nbsp;&nbsp;&nbsp;(io&#x2F;build-individual
+                071&nbsp;&nbsp;&nbsp;&nbsp;(io&#x2F;build-individual
                 </span><br/>
 <span class="covered" title="5 out of 5 forms covered">
-                070&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fitness-based-scanning-genome&nbsp;(:genetic-sequence&nbsp;individual)
+                072&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(fitness-based-scanning-genome&nbsp;(:genetic-sequence&nbsp;individual)
                 </span><br/>
 <span class="covered" title="8 out of 8 forms covered">
-                071&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(io&#x2F;generate-sequence&nbsp;allele-set&nbsp;(count&nbsp;(:genetic-sequence&nbsp;individual)))
+                073&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(io&#x2F;generate-sequence&nbsp;allele-set&nbsp;(count&nbsp;(:genetic-sequence&nbsp;individual)))
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                072&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;percent)
+                074&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;percent)
                 </span><br/>
 <span class="covered" title="3 out of 3 forms covered">
-                073&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(:parents&nbsp;individual)
+                075&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(:parents&nbsp;individual)
                 </span><br/>
 <span class="covered" title="3 out of 3 forms covered">
-                074&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(:age&nbsp;individual)
+                076&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(:age&nbsp;individual)
                 </span><br/>
 <span class="covered" title="1 out of 1 forms covered">
-                075&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fitness-function))
+                077&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fitness-function))
                 </span><br/>
  </body>
 </html>
