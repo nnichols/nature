@@ -9,7 +9,7 @@
     (is (thrown? Exception (ff/binary-sequence-to-int [])))
     (is (thrown? Exception (ff/binary-sequence-to-int [2 1 1 1 1 1 1 1 1 1])))))
 
-(deftest binary-sequence-to-int-test
+(deftest gray-binary-sequence-to-int-test
   (testing "Ensure binary->integer parsing works for various genomes in Gray code, and fails on bad data"
     (is (= 0 (ff/gray-binary-sequence-to-int [0 0 0 0 0 0 0 0 0 0])))
     (is (= 1 (ff/gray-binary-sequence-to-int [0 0 0 0 0 0 0 0 0 1])))
