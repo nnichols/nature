@@ -17,3 +17,11 @@
       (if (= 0 mask)
         val
         (recur (bit-shift-right mask 1) (bit-xor val mask))))))
+
+(defn int-to-decimal-mesh
+  "Splits the continuous range from `lower-bound` to `upper-bound` into discrete `blocks`,
+   than returns the decimal value of the `val-to-convert`th block"
+  [val-to-convert lower-bound upper-bound blocks]
+  (let [block-size (/ (- upper-bound lower-bound) blocks)
+        offset     (* val-to-convert block-size)]
+    (+ lower-bound offset)))
