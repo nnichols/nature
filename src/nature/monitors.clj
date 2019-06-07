@@ -11,3 +11,18 @@
   "Finds the individual with the highest fitness in `population`, and prints it to std-out"
   [population current-generation]
   (println (first (sort-by :fitness-score #(> %1 %2) population))))
+
+(defn print-worst-solution
+  "Finds the individual with the lowest fitness in `population`, and prints it to std-out"
+  [population current-generation]
+  (println (first (sort-by :fitness-score #(< %1 %2) population))))
+
+(defn print-solution-frequencies
+  "Finds how frequently each genetic sequence is repeated across the `population`"
+  [population current-generation]
+  (println (frequencies (map :genetic-sequence population))))
+
+(defn print-fitness-score-frequencies
+  "Finds how frequently each fitness score is repeated across the `population`"
+  [population current-generation]
+  (println (frequencies (map :fitness-score population))))
