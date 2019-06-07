@@ -7,10 +7,22 @@
   (let [fns (apply juxt monitors)]
     (do (fns population current-generation))))
 
+(defn mk-monitor
+  ([monitor-fn population current-generation]
+  (println (monitor-fn population current-generation)))
+
+  ([monitor-fn population current-generation format-fn]
+  (println (format-fn (monitor-fn population current-generation)))))
+
+(defn print-best-solution*
+  "Finds the individual with the highest fitness in `population`"
+  [population current-generation]
+  (first (sort-by :fitness-score #(> %1 %2) population)))
+
 (defn print-best-solution
   "Finds the individual with the highest fitness in `population`, and prints it to std-out"
   [population current-generation]
-  (println (first (sort-by :fitness-score #(> %1 %2) population))))
+  (mk-monitor print-best-solution* population current-generation))
 
 (defn print-worst-solution
   "Finds the individual with the lowest fitness in `population`, and prints it to std-out"
