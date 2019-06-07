@@ -3,7 +3,8 @@
             [nature.population-presets :as pp]
             [nature.initialization-operators :as io]
             [nature.genetic-operators :as go]
-            [nature.population-operators :as po])
+            [nature.population-operators :as po]
+            [nature.monitors :as monitors])
   (:gen-class))
 
 (defn evolve
@@ -18,15 +19,18 @@
   `options` an optional map of pre-specified keywords to values that further tune the behavior of nature.
       Current examples follow:
       `:carry-over` an integer representing the top n individuals to be carried over between each generation. Default is 1
-      `:solutions` an integer representing the top n individuals to return after evolution completes. Default is 1"
+      `:solutions` an integer representing the top n individuals to return after evolution completes. Default is 1
+      `:monitors` a sequence of functions, assumed to be side-effectful, to be executed against `population` and `current-genration` for run-time stats. Default is nil"
   ([allele-set genome-length population-size generations fitness-function binary-operators unary-operators]
    (evolve allele-set genome-length population-size generations fitness-function binary-operators unary-operators {:solutions 1, :carry-over 1}))
 
   ([allele-set genome-length population-size generations fitness-function binary-operators unary-operators options] ;; TODO - Curry the genetic operators one more level, so the fitness-function can be pressed in
    (let [solutions (max 1 (:solutions options))
-         carry-over (max 1 (:carry-over options))]
+         carry-over (max 1 (:carry-over options))
+         monitors (:monitors options)]
      (loop [population (io/build-population population-size allele-set genome-length fitness-function)
             current-generation 0]
+       (when monitors (monitors/apply-monitors monitors population current-generation))
        (if (>= current-generation generations)
          (take solutions (sort-by :fitness-score #(> %1 %2) population))
          (recur (po/advance-generation population population-size binary-operators unary-operators {:carry-over carry-over}) (inc current-generation)))))))
@@ -41,4 +45,4 @@
                    pp/sum-alleles
                    [(go/crossover pp/sum-alleles)]
                    [(partial go/mutation-operator pp/sum-alleles pp/binary-genome 1)]
-                   {:solutions 1, :carry-over 5})))
+                   {:solutions 1, :carry-over 5, :monitors [monitors/print-best-solution]})))
