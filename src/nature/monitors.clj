@@ -12,10 +12,10 @@
    If a `format-fn` has been supplied, modify the output before printing.
    This is useful for separating the monitor code into a separate testable function."
   ([monitor-fn population current-generation]
-  (println (monitor-fn population current-generation)))
+   (println (monitor-fn population current-generation)))
 
   ([monitor-fn population current-generation format-fn]
-  (println (format-fn (monitor-fn population current-generation)))))
+   (println (format-fn (monitor-fn population current-generation)))))
 
 (defn print-best-solution*
   "Finds the individual with the highest fitness in `population`"
