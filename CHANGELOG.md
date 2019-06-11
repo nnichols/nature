@@ -1,3 +1,9 @@
+## v0.3.0 / 2019 June 11
+
+> This release adds common performance monitors
+
+* **Add** - Monitors for individual/population performance reporting
+
 ## v0.2.2 / 2019 February 17
 
 > This release adds common fitness-function helpers
