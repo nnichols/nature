@@ -25,6 +25,9 @@
    (evolve allele-set genome-length population-size generations fitness-function binary-operators unary-operators {:solutions 1, :carry-over 1}))
 
   ([allele-set genome-length population-size generations fitness-function binary-operators unary-operators options] ;; TODO - Curry the genetic operators one more level, so the fitness-function can be pressed in
+   {:pre [(and (every? coll? [allele-set binary-operators unary-operators])
+               (every? int? [genome-length population-size generations])
+               (fn? fitness-function))]}
    (let [solutions (max 1 (:solutions options))
          carry-over (max 1 (:carry-over options))
          monitors (:monitors options)]
