@@ -1,3 +1,9 @@
+## v0.3.1 / 2019 June 23
+
+> This release adds argument assertions to `evolve`
+
+* **Add** - Pre-conditions for evolve
+
 ## v0.3.0 / 2019 June 11
 
 > This release adds common performance monitors
