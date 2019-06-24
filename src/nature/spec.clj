@@ -3,7 +3,7 @@
   (:require [clojure.spec.alpha :as s]))
 
 (defn not-empty?
-  "A predicate version of not-empty, because it's a sensible feeature"
+  "A predicate version of not-empty, because it's a sensible feature"
   [coll]
   (not (empty? coll)))
 
