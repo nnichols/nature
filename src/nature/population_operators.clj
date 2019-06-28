@@ -1,7 +1,6 @@
 (ns nature.population-operators
   "Functions that span or operate against entire populations"
-  (:require [nature.population-presets :as pp]
-            [bigml.sampling.simple :as bss]))
+  (:require [bigml.sampling.simple :as bss]))
 
 (defn keep-elite
   "Find the top `number-to-keep` individuals in `population`, and increment their ages by 1"

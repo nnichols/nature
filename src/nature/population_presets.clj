@@ -2,7 +2,7 @@
   "Commonly used alleles and settings to help reign in magic constants")
 
 (def initializer-name
-  (vector "Initializer"))
+  ["Initializer"])
 
 (def default-age
   0)
