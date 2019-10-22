@@ -1,16 +1,14 @@
-(defproject nature "0.3.1"
+(defproject nature "1.0.0"
             :description "A simple genetic algorithms library for Clojure(Script)"
             :url "https://github.com/nnichols/nature"
             :license {:name "Eclipse Public License"
                       :url "http://www.eclipse.org/legal/epl-v10.html"}
             :dependencies [[org.clojure/clojure "1.10.1"]
                            [org.clojure/clojurescript "1.10.520" :scope "provided"]
-                           [cljx-sampling "0.1.0"]
-                           [doo "0.1.6-SNAPSHOT"]]
+                           [cljx-sampling "0.1.0"]]
 
             :plugins [[com.jakemccrary/lein-test-refresh "0.19.0"]
                       [lein-cljsbuild "1.1.7"]
-                      [lein-doo "0.1.10"]
                       [lein-figwheel "0.5.14"]]
 
             :aliases {"test-build" ["do" "clean" ["cljsbuild" "once" "test"] ["doo" "once"]]}
@@ -39,4 +37,6 @@
 
             :min-lein-version "2.5.3"
             :target-path "target/%s"
-            :profiles {:uberjar {:aot :all}})
+            :profiles {:uberjar {:aot :all}
+                       :dev {:dependencies [[doo "0.1.8"]]
+                             :plugins      [[lein-doo "0.1.10"]]}})

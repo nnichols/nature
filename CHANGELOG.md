@@ -1,3 +1,9 @@
+## v1.0.0 / 2019 Oct 22
+
+> This release migrates nature to a .cljc library
+
+* **Update** - POTENTIALLY BREAKING CHANGE - nature is now a .cljc library
+
 ## v0.3.1 / 2019 June 23
 
 > This release adds argument assertions to `evolve`
