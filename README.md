@@ -1,4 +1,4 @@
-# nature - A simple genetic algorithms library for Clojure
+# nature - A simple genetic algorithms library for Clojure(Script)
 <a href="https://icons8.com/icon/20873/organic-food"><img src="resources/icons8-nature.png"></a>
 [![Clojars Project](https://img.shields.io/clojars/v/nature.svg)](https://clojars.org/nature)
 [![Dependencies Status](https://versions.deps.co/nnichols/nature/status.svg)](https://versions.deps.co/nnichols/nature)

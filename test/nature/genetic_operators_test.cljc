@@ -1,10 +1,11 @@
 (ns nature.genetic-operators-test
-  (:require [clojure.test :refer :all]
-            [clojure.spec.alpha :as csa]
+  (:require [clojure.spec.alpha :as csa]
             [nature.spec :as s]
             [nature.genetic-operators :as go]
             [nature.initialization-operators :as io]
-            [nature.population-presets :as pp]))
+            [nature.population-presets :as pp]
+            #? (:clj  [clojure.test :refer [deftest is testing run-tests]])
+            #? (:cljs [cljs.test    :refer-macros [deftest is testing run-tests]])))
 
 (deftest binary-operators-*-test
   (let [sample-population (io/build-population 2

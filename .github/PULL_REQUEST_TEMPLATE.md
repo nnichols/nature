@@ -5,5 +5,6 @@ Changes proposed in this merge request:
 
 ### Pre-merge Checklist
 - [ ] Write + run tests
-- [ ] Run CLEAN.sh and update documentation
+- [ ] Update documentation
+- [ ] Run `lein cloverage`
 - [ ] Update CHANGELOG and increment version

@@ -1,11 +1,13 @@
 (ns nature.initialization-operators
   "Functions to create individuals and populations"
+  (:refer-clojure :exclude [uuid])
   (:require [nature.population-presets :as pp]))
 
 (defn uuid
-  "More idiomatic wrapper around Java's v1 UUID functionality"
+  "Split operator to generate v1 uuids based on runtime env"
   []
-  (str (java.util.UUID/randomUUID)))
+  #?(:clj  (str (java.util.UUID/randomUUID))
+     :cljs (str (random-uuid))))
 
 (defn generate-sequence
   "Creates a genetic sequence of `sequence-length` elements,

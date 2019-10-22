@@ -1,6 +1,6 @@
 (ns nature.population-operators
   "Functions that span or operate against entire populations"
-  (:require [bigml.sampling.simple :as bss]))
+  (:require [cljx-sampling.core :as rnd]))
 
 (defn keep-elite
   "Find the top `number-to-keep` individuals in `population`, and increment their ages by 1"
@@ -11,9 +11,9 @@
   "Pick `total-retreived` individuals from `population` with a relative probability of
   the individual's fitness score divided by the population's aggregate fitness score"
   ([population total-retrieved]
-   (take total-retrieved (bss/sample population :weigh :fitness-score :replace true)))
+   (take total-retrieved (rnd/sample population :weigh :fitness-score :replace true)))
   ([population total-retrieved replace?]
-   (take total-retrieved (bss/sample population :weigh :fitness-score :replace replace?))))
+   (take total-retrieved (rnd/sample population :weigh :fitness-score :replace replace?))))
 
 (defn advance-generation
   "Apply the functions in `binary-operator-set` until a sufficiently large population is built.
