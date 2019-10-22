@@ -1,9 +1,10 @@
 (ns nature.initialization-operators-test
-  (:require [clojure.test :refer :all]
-            [clojure.spec.alpha :as csa]
+  (:require [clojure.spec.alpha :as csa]
             [nature.spec :as s]
             [nature.initialization-operators :as io]
-            [nature.population-presets :as pp]))
+            [nature.population-presets :as pp]
+            #? (:clj  [clojure.test :refer [deftest is testing run-tests]])
+            #? (:cljs [cljs.test    :refer-macros [deftest is testing run-tests]])))
 
 (deftest uuid-test
   (testing "Ensure uuids are sensible"

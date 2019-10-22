@@ -4,7 +4,8 @@
 (defn binary-sequence-to-int
   "Convert `binary-seq`, a collection of binary values, to the positive integer it represents"
   [binary-seq]
-  (Integer/parseInt (apply str "" binary-seq) 2))
+  #?(:clj  (Integer/parseInt (apply str "" binary-seq) 2)
+     :cljs (js/parseInt (apply str "" binary-seq) 2)))
 
 (defn gray-binary-sequence-to-int
   "Convert `binary-seq`, a collection of binary values, to the positive integer it represents

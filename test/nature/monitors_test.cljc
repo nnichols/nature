@@ -1,10 +1,11 @@
 (ns nature.monitors-test
-  (:require [clojure.test :refer :all]
-            [clojure.spec.alpha :as csa]
+  (:require [clojure.spec.alpha :as csa]
             [nature.spec :as s]
             [nature.monitors :as mo]
             [nature.initialization-operators :as io]
-            [nature.population-presets :as pp]))
+            [nature.population-presets :as pp]
+            #? (:clj  [clojure.test :refer [deftest is testing run-tests]])
+            #? (:cljs [cljs.test    :refer-macros [deftest is testing run-tests]])))
 
 (deftest best-worst-solution-monitor-test
   (let [sample-population (io/build-population 200

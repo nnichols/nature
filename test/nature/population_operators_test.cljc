@@ -1,11 +1,12 @@
 (ns nature.population-operators-test
-  (:require [clojure.test :refer :all]
-            [clojure.spec.alpha :as csa]
+  (:require [clojure.spec.alpha :as csa]
             [nature.initialization-operators :as io]
             [nature.spec :as s]
             [nature.genetic-operators :as go]
             [nature.population-operators :as po]
-            [nature.population-presets :as pp]))
+            [nature.population-presets :as pp]
+            #? (:clj  [clojure.test :refer [deftest is testing run-tests]])
+            #? (:cljs [cljs.test    :refer-macros [deftest is testing run-tests]])))
 
 (deftest advance-generation-test
   (testing "Check that a new generation can be created from a prior generation"

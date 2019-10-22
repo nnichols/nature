@@ -3,8 +3,7 @@
             [nature.initialization-operators :as io]
             [nature.genetic-operators :as go]
             [nature.population-operators :as po]
-            [nature.monitors :as monitors])
-  (:gen-class))
+            [nature.monitors :as monitors]))
 
 (defn evolve
   "Create and evolve a population under the specified conditions until a termination criteria is reached
