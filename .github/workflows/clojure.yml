@@ -1,15 +1,19 @@
-name: Clojure CI
+name: Clojure and ClojureScript CI
 
 on: [push]
 
 jobs:
   build:
- 
+
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies
       run: lein deps
-    - name: Run tests
+    - name: Run Clojure tests
       run: lein test
+    - name: Install node.js dependencies
+      run: npm install
+    - name: Run ClojureScript tests
+      run: lein test-build
