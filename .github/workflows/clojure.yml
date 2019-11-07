@@ -17,3 +17,5 @@ jobs:
       run: npm install
     - name: Run ClojureScript tests
       run: lein test-build
+    - name: Secret Scan
+      uses: max/secret-scan@1.0.0
