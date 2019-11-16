@@ -3,7 +3,7 @@
 [![Clojars Project](https://img.shields.io/clojars/v/nature.svg)](https://clojars.org/nature)
 [![Dependencies Status](https://versions.deps.co/nnichols/nature/status.svg)](https://versions.deps.co/nnichols/nature)
 [![cljdoc badge](https://cljdoc.org/badge/nature/nature)](https://cljdoc.org/d/nature/nature/CURRENT)
-![Github Runner](https://github.com/nnichols/nature/workflows/Clojure%20CI/badge.svg)
+![Github Runner](https://github.com/nnichols/nature/workflows/Clojure%20and%20ClojureScript%20CI/badge.svg)
 
 > Don't you see the danger, John, inherent in what you're doing here?
 > Genetic power is the most awesome force the planet's ever seen, but you wield it like a kid that's found his dad's gun.
