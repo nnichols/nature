@@ -10,9 +10,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 1. Update the [CHANGELOG.md](https://github.com/nnichols/nature/blob/master/CHANGELOG.md) with details of all changes.
 2. If any changes impact the external interface or use of **nature**, please update the [README](https://github.com/nnichols/nature/blob/master/README.md)
    to reflect any relevant differences.
-3. Execute [CLEAN.sh](https://github.com/nnichols/nature/blob/master/CLEAN.sh) to help smoke out any issues.
-   This will also build the automated external documentation we provide to end users.
-4. Update all version numbers to the new version that this Pull Request would represent.
+3. Update all version numbers to the new version that this Pull Request would represent.
    The versioning scheme we use is [SemVer](http://semver.org/).
 
 ### Read the Documentation
