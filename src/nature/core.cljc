@@ -35,15 +35,3 @@
        (if (>= current-generation generations)
          (take solutions (sort-by :fitness-score #(> %1 %2) population))
          (recur (po/advance-generation population population-size binary-operators unary-operators {:carry-over carry-over}) (inc current-generation)))))))
-
-(defn -main
-  "A very, very simple example"
-  [& args]
-  (println (evolve pp/binary-genome
-                   pp/default-sequence-length
-                   pp/default-population-size
-                   pp/default-generation-count
-                   pp/sum-alleles
-                   [(go/crossover pp/sum-alleles)]
-                   [(partial go/mutation-operator pp/sum-alleles pp/binary-genome 1)]
-                   {:solutions 1, :carry-over 5, :monitors [monitors/print-best-solution]})))
