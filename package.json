@@ -27,6 +27,7 @@
     "karma-firefox-launcher": "^1.2.0",
     "karma-ie-launcher": "^1.0.0",
     "karma-opera-launcher": "^1.0.0",
-    "karma-safari-launcher": "^1.0.0"
+    "karma-safari-launcher": "^1.0.0",
+    "minimist": ">=1.2.2"
   }
 }
