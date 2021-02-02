@@ -7,7 +7,7 @@
                            [org.clojure/clojurescript "1.10.520" :scope "provided"]
                            [cljx-sampling "0.1.0"]]
 
-            :plugins [[com.jakemccrary/lein-test-refresh "0.19.0"]
+            :plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]
                       [lein-cljsbuild "1.1.7"]
                       [lein-figwheel "0.5.14"]]
 
