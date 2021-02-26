@@ -6,7 +6,6 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +20,7 @@
   },
   "homepage": "https://github.com/nnichols/nature#readme",
   "devDependencies": {
-    "karma": "^4.4.1",
+    "karma": "^6.1.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-cljs-test": "^0.1.0",
     "karma-firefox-launcher": "^1.2.0",
