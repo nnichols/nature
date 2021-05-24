@@ -1,6 +1,6 @@
 name: Clojure and ClojureScript CI
 
-on: [push]
+on: ["push", "workflow_dispatch"]
 
 jobs:
   build:
