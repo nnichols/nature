@@ -5,7 +5,7 @@
 (defn not-empty?
   "A predicate version of not-empty, because it's a sensible feature"
   [coll]
-  (not (empty? coll)))
+  (boolean (seq coll)))
 
 (s/def ::genetic-sequence
   (s/and coll?

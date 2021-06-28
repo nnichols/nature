@@ -3,8 +3,8 @@
             [nature.spec :as s]
             [nature.initialization-operators :as io]
             [nature.population-presets :as pp]
-            #? (:clj  [clojure.test :refer [deftest is testing run-tests]])
-            #? (:cljs [cljs.test    :refer-macros [deftest is testing run-tests]])))
+            #? (:clj  [clojure.test :refer [deftest is testing]])
+            #? (:cljs [cljs.test    :refer-macros [deftest is testing]])))
 
 (deftest uuid-test
   (testing "Ensure uuids are sensible"

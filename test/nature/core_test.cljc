@@ -4,11 +4,11 @@
             [nature.spec :as s]
             [nature.genetic-operators :as go]
             [nature.population-presets :as pp]
-            #? (:clj  [clojure.test :refer [deftest is testing run-tests]])
-            #? (:cljs [cljs.test    :refer-macros [deftest is testing run-tests]])))
+            #? (:clj  [clojure.test :refer [deftest is testing]])
+            #? (:cljs [cljs.test    :refer-macros [deftest is testing]])))
 
 (deftest evolve-test
-  (testing "Check that evolution is successfull"
+  (testing "Check that evolution is successful"
     (let [result (nature/evolve pp/binary-genome
                                 pp/default-sequence-length
                                 pp/default-population-size
