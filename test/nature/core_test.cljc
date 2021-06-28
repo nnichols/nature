@@ -8,7 +8,7 @@
             #? (:cljs [cljs.test    :refer-macros [deftest is testing]])))
 
 (deftest evolve-test
-  (testing "Check that evolution is successfull"
+  (testing "Check that evolution is successful"
     (let [result (nature/evolve pp/binary-genome
                                 pp/default-sequence-length
                                 pp/default-population-size
