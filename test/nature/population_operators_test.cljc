@@ -5,8 +5,8 @@
             [nature.genetic-operators :as go]
             [nature.population-operators :as po]
             [nature.population-presets :as pp]
-            #? (:clj  [clojure.test :refer [deftest is testing run-tests]])
-            #? (:cljs [cljs.test    :refer-macros [deftest is testing run-tests]])))
+            #? (:clj  [clojure.test :refer [deftest is testing]])
+            #? (:cljs [cljs.test    :refer-macros [deftest is testing]])))
 
 (deftest advance-generation-test
   (testing "Check that a new generation can be created from a prior generation"

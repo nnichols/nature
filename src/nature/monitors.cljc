@@ -5,7 +5,7 @@
   "Apply each function in `monitors` against `population` and `current-generation`"
   [monitors population current-generation]
   (let [fns (apply juxt monitors)]
-    (do (fns population current-generation))))
+    (fns population current-generation)))
 
 (defn mk-monitor
   "Apply `monitor-fn` to the `population` and `current-generation`, and print the result.
@@ -19,7 +19,7 @@
 
 (defn print-best-solution*
   "Finds the individual with the highest fitness in `population`"
-  [population current-generation]
+  [population _current-generation]
   (first (sort-by :fitness-score #(> %1 %2) population)))
 
 (defn print-best-solution
@@ -29,7 +29,7 @@
 
 (defn print-worst-solution*
   "Finds the individual with the lowest fitness in `population`"
-  [population current-generation]
+  [population _current-generation]
   (first (sort-by :fitness-score #(> %2 %1) population)))
 
 (defn print-worst-solution
@@ -39,7 +39,7 @@
 
 (defn print-solution-frequencies*
   "Finds how frequently each genetic sequence is repeated across the `population`"
-  [population current-generation]
+  [population _current-generation]
   (frequencies (map :genetic-sequence population)))
 
 (defn print-solution-frequencies
@@ -49,7 +49,7 @@
 
 (defn print-fitness-score-frequencies*
   "Finds how frequently each fitness score is repeated across the `population`"
-  [population current-generation]
+  [population _current-generation]
   (frequencies (map :fitness-score population)))
 
 (defn print-fitness-score-frequencies

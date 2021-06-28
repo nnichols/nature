@@ -1,7 +1,5 @@
 (ns nature.core
-  (:require [nature.population-presets :as pp]
-            [nature.initialization-operators :as io]
-            [nature.genetic-operators :as go]
+  (:require [nature.initialization-operators :as io]
             [nature.population-operators :as po]
             [nature.monitors :as monitors]))
 

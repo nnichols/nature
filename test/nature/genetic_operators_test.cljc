@@ -4,8 +4,8 @@
             [nature.genetic-operators :as go]
             [nature.initialization-operators :as io]
             [nature.population-presets :as pp]
-            #? (:clj  [clojure.test :refer [deftest is testing run-tests]])
-            #? (:cljs [cljs.test    :refer-macros [deftest is testing run-tests]])))
+            #? (:clj  [clojure.test :refer [deftest is testing]])
+            #? (:cljs [cljs.test    :refer-macros [deftest is testing]])))
 
 (deftest binary-operators-*-test
   (let [sample-population (io/build-population 2

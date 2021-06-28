@@ -1,7 +1,7 @@
 (ns nature.fitness-functions-test
   (:require [nature.fitness-functions :as ff]
-            #? (:clj  [clojure.test :refer [deftest is testing run-tests]])
-            #? (:cljs [cljs.test    :refer-macros [deftest is testing run-tests]])))
+            #? (:clj  [clojure.test :refer [deftest is testing]])
+            #? (:cljs [cljs.test    :refer-macros [deftest is testing]])))
 
 (deftest binary-sequence-to-int-test
   (testing "Ensure binary->integer parsing works for various genomes, and fails on bad data"

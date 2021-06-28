@@ -69,6 +69,7 @@ The core of nature's functionality lies within the `evolve` function.
 - `options` an optional map of pre-specified keywords to values that further tune the behavior of nature.
 
 Additionally, and 8th argument may be supplied: `options` is a map that currently checks for two keys:
+
 - `:carry-over` an integer representing the top n individuals to be carried over between each generation. Default is 1.
 - `:solutions` an integer representing the top n individuals to return after evolution completes. Default is 1.
 
@@ -76,7 +77,7 @@ So, how do we go from this function to the solution above?
 Let's look at a simple example.
 Say we commonly work with lists of twenty five binary digits:
 
-```
+```txt
 (1 0 0 0 0 0 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 0 0 0 0)
 (0 0 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0)
 (1 1 0 1 1 0 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 0 1)
@@ -85,7 +86,7 @@ Say we commonly work with lists of twenty five binary digits:
 
 As we see each list, we're asked to evaluate each list by counting up the number of times we see a 1 present.
 
-```
+```txt
 (1 0 0 0 0 0 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 0 0 0 0) = 6
 (0 0 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0) = 4
 (1 1 0 1 1 0 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 0 1) = 20

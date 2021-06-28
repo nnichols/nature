@@ -3,17 +3,39 @@ name: Clojure and ClojureScript CI
 on: ["push", "workflow_dispatch"]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2.3.4
-    - name: Install dependencies
+    - name: Checkout Repository
+      uses: actions/checkout@v2.3.4
+
+    - name: Cache maven dependencies
+      uses: actions/cache@v2
+      env:
+          cache-name: cache-maven
+      with:
+          path: ~/.m2
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/project.clj') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/project.clj') }}
+
+    - name: Cache npm dependencies
+      uses: actions/cache@v2
+      env:
+          cache-name: cache-npm
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install Clojure/ClojureScript dependencies
       run: lein deps
-    - name: Run Clojure tests
-      run: lein test
+
     - name: Install node.js dependencies
       run: npm install
-    - name: Run ClojureScript tests
+
+    - name: Run tests
       run: lein test-build

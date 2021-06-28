@@ -62,7 +62,7 @@
 (defn no-op
   "A proxy for `identity` to signal when a particular operation category is not needed,
    but the `selected-individuals` are kept in the pool"
-  [fitness-function selected-individuals]
+  [_fitness-function selected-individuals]
   (map #(update % :age inc) selected-individuals))
 
 (defn mutation-operator
