@@ -3,11 +3,11 @@
             :url "https://github.com/nnichols/nature"
             :license {:name "Eclipse Public License"
                       :url "http://www.eclipse.org/legal/epl-v10.html"}
-            :dependencies [[org.clojure/clojure "1.10.3"]
+            :dependencies [[org.clojure/clojure "1.11.1"]
                            [org.clojure/clojurescript "1.10.844" :scope "provided"]
                            [cljx-sampling "0.1.0"]]
 
-            :plugins [[com.jakemccrary/lein-test-refresh "0.24.1"]
+            :plugins [[com.jakemccrary/lein-test-refresh "0.25.0"]
                       [lein-cljsbuild "1.1.7"]
                       [lein-figwheel "0.5.14"]]
 
