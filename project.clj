@@ -38,5 +38,5 @@
             :min-lein-version "2.5.3"
             :target-path "target/%s"
             :profiles {:uberjar {:aot :all}
-                       :dev {:dependencies [[doo "0.1.8"]]
+                       :dev {:dependencies [[doo "0.1.11"]]
                              :plugins      [[lein-doo "0.1.10"]]}})
