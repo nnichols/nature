@@ -9,7 +9,7 @@
 
             :plugins [[com.jakemccrary/lein-test-refresh "0.25.0"]
                       [lein-cljsbuild "1.1.8"]
-                      [lein-figwheel "0.5.14"]]
+                      [lein-figwheel "0.5.20"]]
 
             :aliases {"test-build" ["do" "clean" ["cljsbuild" "once" "test"] ["doo" "once"]]}
 
