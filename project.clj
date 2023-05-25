@@ -8,7 +8,7 @@
                            [cljx-sampling "0.1.0"]]
 
             :plugins [[com.jakemccrary/lein-test-refresh "0.25.0"]
-                      [lein-cljsbuild "1.1.7"]
+                      [lein-cljsbuild "1.1.8"]
                       [lein-figwheel "0.5.14"]]
 
             :aliases {"test-build" ["do" "clean" ["cljsbuild" "once" "test"] ["doo" "once"]]}
