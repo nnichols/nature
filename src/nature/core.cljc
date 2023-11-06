@@ -26,8 +26,11 @@
                (fn? fitness-function))]}
    (let [solutions (max 1 (:solutions options))
          carry-over (max 1 (:carry-over options))
-         monitors (:monitors options)]
-     (loop [population (io/build-population population-size allele-set genome-length fitness-function)
+         monitors (:monitors options)
+         sequence-generator-function (:generator options)]
+     (loop [population (if (some? sequence-generator-function)
+                         (io/build-population population-size sequence-generator-function fitness-function) 
+                         (io/build-population population-size allele-set genome-length fitness-function))
             current-generation 0]
        (when monitors (monitors/apply-monitors monitors population current-generation))
        (if (>= current-generation generations)
