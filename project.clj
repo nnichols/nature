@@ -3,7 +3,7 @@
             :url "https://github.com/nnichols/nature"
             :license {:name "Eclipse Public License"
                       :url "http://www.eclipse.org/legal/epl-v10.html"}
-            :dependencies [[org.clojure/clojure "1.11.4"]
+            :dependencies [[org.clojure/clojure "1.12.0"]
                            [org.clojure/clojurescript "1.11.132" :scope "provided"]
                            [cljx-sampling "0.1.0"]]
 
