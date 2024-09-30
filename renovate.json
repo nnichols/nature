@@ -13,5 +13,11 @@
   "schedule": [
     "after 11am and before 8pm every weekday"
   ],
+  "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "3 days".
+    }
+  ],
   "timezone": "America/Chicago"
 }
