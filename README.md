@@ -1,15 +1,19 @@
-# nature - A simple genetic algorithms library for Clojure(Script)
+# nature - A genetic algorithms library for Clojure(Script)
 
 <a href="https://icons8.com/icon/20873/organic-food"><img src="resources/icons8-nature.png"></a>
 [![Clojars Project](https://img.shields.io/clojars/v/nature.svg)](https://clojars.org/nature)
-[![Dependencies Status](https://versions.deps.co/nnichols/nature/status.svg)](https://versions.deps.co/nnichols/nature)
 [![cljdoc badge](https://cljdoc.org/badge/nature/nature)](https://cljdoc.org/d/nature/nature/CURRENT)
-![Github Runner](https://github.com/nnichols/nature/workflows/Clojure%20and%20ClojureScript%20CI/badge.svg)
 
 > Don't you see the danger, John, inherent in what you're doing here?
 > Genetic power is the most awesome force the planet's ever seen, but you wield it like a kid that's found his dad's gun.
 >
 > - Dr. Ian Malcolm from [*Jurassic Park*](https://www.imdb.com/title/tt0107290/)
+
+## Deprecation Notice
+
+I have not actively maintained this library in some time, and the contents are neither widely used enough nor expansive enough to warrant finding new maintainers for.
+As of 2025-10-03, this library should be considered unsupported- with archival on GitHub imminent.
+If you are interested in this functionality, or in forking this repository, you are free to do so under the restrictions indicated by the [Eclipse Public License](https://github.com/nnichols/nature/blob/master/LICENSE)
 
 ## Installation
 
